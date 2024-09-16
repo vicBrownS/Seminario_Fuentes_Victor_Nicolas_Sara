@@ -6,7 +6,7 @@
  Para obtener mayor información acerca del proyecto, consultar la Wiki del repositorio.
  
  # Integrantes del grupo
- Víctor Brown Sogrob, Nicolás José García Gómez y Sara Meda López
+ Víctor Brown Sogorb, Nicolás José García Gómez y Sara Meda López
  
 # Título del proyecto
 Neurobiología del sueño y su importancia para el estudiante universitario.

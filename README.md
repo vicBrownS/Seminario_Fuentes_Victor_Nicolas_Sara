@@ -17,7 +17,7 @@ El descanso es fundamental para un buen rendimiento físico y mental, especialme
 # Objetivo
 1. Estudiar la reacción entre la calidad del sueño y el rendimiento académico en estudiantes universitarios. 
    
-# Metodología
+# Metodologia
 Objetivo 1
 Objetivo 2
 Objetivo 3

@@ -14,49 +14,32 @@ sexos = c("Mujeres","Hombres", "Ambos sexos")
 levels_ef = c("TOTAL","NAp","1", "2", "3", "4")
 #------------ FUNCIONES PARA EL TRATAMIENTO DE DATOS
 
-#Trata las tablas de datos de Ejercicio físico sacadas del INE
-TDatosEjercicioFisico <- function(data, sexo = "NULL", comunidades_autonomas = comunidades_autonomas,
-                                  ef = ejercicio_fisico, levels = levels_ef, levels_sexos = sexos){
-  #Añade y distribuye levels a las columnas de la tabla
+#Trata los datos que se encuntran en las tablas, está hecho para el formato
+#de datos entragado por el INE en las tablas donde las categorias son sexo y Comiunidad autónoma
+TratamientoDatosGeneral <- function(data, sexo = "NULL", comunidades_autonomas = comunidades_autonomas,
+                                    levels_sexos = sexos){
+  #Asigna a cada columna sus factores y elimina las que no queremos
   data$Sexo <- factor(x = data$Sexo, levels = levels_sexos)
   data$Comunidades.y.Ciudades.Autónomas <- factor(x = data$Comunidades.y.Ciudades.Autónomas,
                                                   levels = comunidades_autonomas)
   data$Total.Nacional <- NULL
-  data$Ejercicio.físico <- factor(x = data$Ejercicio.físico, levels = ef)
-  #Cambia el nombre a los levels de Ejercicio fisico
-  levels(data$Ejercicio.físico) <- levels_ef
-  #Filtra las filas que no son importantes
-  filtro <- data$Ejercicio.físico != "TOTAL" & data$Comunidades.y.Ciudades.Autónomas != ""
+  #Esta linea opera en la columna 3, donde siempre estaran las categorias de la respuesta
+  data[,3] <- factor(x = data[,3], levels = c(data[1,3],data[2,3],data[3,3], data[4,3],data[5,3],data[6,3]))
+  #Aplica un filtro y quita las columnas que no queremos
+  filtro <- data[,3] != "TOTAL" & data$Comunidades.y.Ciudades.Autónomas != ""
   data <- data[filtro,]
-  #Cambia la columna Total de character a numerico
+  #Pasa el totla de character a numeric
   data$Total = as.numeric(gsub(",",".", data$Total))
   #Filtra en funcion del sexo si así se ha elegido
   if(sexo != "NULL"){
     return(data[data$Sexo == sexo,])
   } 
-  return(data)
-}
-TDatosSaludMental <- function(data, sexo = "NULL", comunidades_autonomas = comunidades_autonomas,
-                                  sm = salud_mental, levels_sexos = sexos){
-  #Añade y distribuye levels a las columnas de la tabla
-  data$Sexo <- factor(x = data$Sexo, levels = levels_sexos)
-  data$Comunidades.y.Ciudades.Autónomas <- factor(x = data$Comunidades.y.Ciudades.Autónomas,
-                                                  levels = comunidades_autonomas)
-  data$Total.Nacional <- NULL
-  data$Intensidad.depresión <- factor(x = data$Intensidad.depresión, levels = sm)
-  #Filtra las filas que no son importantes
-  filtro <- data$Intensidad.depresión != "TOTAL" & data$Comunidades.y.Ciudades.Autónomas != ""
-  data <- data[filtro,]
-  #Cambia la columna Total de character a numerico
-  data$Total = as.numeric(gsub(",",".", data$Total))
-  #Filtra en funcion del sexo si así se ha elegido
-  if(sexo != "NULL"){
-    return(data[data$Sexo == sexo,])
-  } 
+  #Devuelve los datos
   return(data)
 }
 
-#Devuelve la diferencia del Total entre dos conjuntos de EF
+
+#Devuelve la diferencia del Total entre dos conjuntos 
 DiffTotal <- function(dataset1, dataset2){
   diff <- dataset1$Total - dataset2$Total
   datadiff <- dataset1
@@ -64,16 +47,19 @@ DiffTotal <- function(dataset1, dataset2){
   return(datadiff)
 }
 
+
 #Crea un boxplot del dataset dado con ggplot
-BoxplotEfTotal <- function(datos, año){
+BoxplotEfTotal <- function(datos, año, factor = "Ejercicio.físico" ){
   library(ggplot2)
+  factorx <- datos[factor]
+  datos$factorx <- factorx
   #Crea el boxplot con los datos entregados en los parametros
   p <- ggplot(data = datos, 
-         aes(x = data$Ejericio.físico, y = Total)) +
+         aes(x = factorx, y = Total)) +
     geom_jitter(aes(colour = Comunidades.y.Ciudades.Autónomas)) + 
     geom_boxplot(alpha = 0.8) +
     ggtitle(paste("Ejercicio Físico", datos$Sexo[1], año)) +
-    xlab(factor) +
+    xlab("Ejercicio Físico") +
     ylab("Total %") +
     theme(axis.text.x = element_text(colour = "darkblue", size = 15),
           axis.text.y = element_text(colour = "darkblue", size = 15),

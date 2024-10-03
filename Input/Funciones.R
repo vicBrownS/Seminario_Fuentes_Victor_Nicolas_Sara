@@ -33,8 +33,7 @@ TratamientoDatosGeneral <- function(data, sexo = "NULL", comunidades_autonomas =
   #Filtra en funcion del sexo si así se ha elegido
   if(sexo != "NULL"){
     return(data[data$Sexo == sexo,])
-  } 
-  #Devuelve los datos
+  }
   return(data)
 }
 

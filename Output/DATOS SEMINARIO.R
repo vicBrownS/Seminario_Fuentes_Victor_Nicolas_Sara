@@ -3,12 +3,13 @@ source("Input\\Funciones.R")
 library(ggplot2)
 #Cargamos los csv
 datos_ef_2014 <- read.csv("Input\\data\\Ejercicio2014.csv", sep = ";")
-datos_ef_2020 <- read.csv("Input\\Ejercicio2020.csv", sep = ";")
+datos_ef_2020 <- read.csv("Input\\data\\Ejercicio2020.csv", sep = ";")
+datos_sm_2014 <- read.csv("Input\\data\\SaludMental2014.csv", sep = ";")
 #Tratamos los datos originales sacando los subconjuntos a estudiar
-mujeres_ef_2014 <- TratamientoDatosGeneral(data = datos_ef_2014)
-hombres_ef_2014 <- TDatosEjercicioFisico(datos_ef_2014, sexo = "Hombres")
-mujeres_ef_2020 <- TDatosEjercicioFisico(datos_ef_2020, sexo = "Mujeres")
-hombres_ef_2020 <- TDatosEjercicioFisico(datos_ef_2020, sexo = "Hombres")
+hombres_ef_2014 <- TratamientoDatosGeneral(data = datos_ef_2014, sexo = "Hombres")
+hombres_sm_2014 <- TratamientoDatosGeneral(datos_sm_2014, sexo = "Hombres")
+
+merged <- merge( x = hombres_ef_2014,y = hombres_sm_2014, by = c("Ejercicio.físico","Intensidad.depresión"))
 diff_mujeres_ef_2014 <- DiffTotal(mujeres_ef_2020,mujeres_ef_2014)
 diff_hombres_ef_2014 <- DiffTotal(hombres_ef_2020,hombres_ef_2014)
 #Eliminamos los datos originales

@@ -6,6 +6,7 @@
 library(shiny)
 library(ggplot2)
 source("Input\\Funciones.R")
+library(bslib)
 datasets <- list.files("Input\\data")
 claseplot <- c("Boxplot", "Histograma", "Density")
 ###########
@@ -49,7 +50,6 @@ ui <- fluidPage(
         selectInput("sexorepresentar", "Sexo a Representar",
                     choices = c("N/A","Hombres","Mujeres","Ambos sexos"))
       ),
-      #Panel condicional que se muestra si el gráfico a representar es un boxplot
       conditionalPanel("input.claseplot == 'Boxplot'",
                       #Se escoge el elemento en el que se va a hacer el mapping
                       helpText(h5("Cambia el color de los elementos del gráfico en funcion de otra variable")),
@@ -70,30 +70,60 @@ ui <- fluidPage(
     ),
     #Panel principal donde se inprime el gráfico
     mainPanel(
-      plotOutput("plot"),
-      tableOutput("tablajoin")
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        title = strong("VISTA"),
+        #Panel donde se observa el plot
+        tabPanel(title = "Plot",
+                 plotOutput("plot"),
+                 selectizeInput("viewop","Opciones de Vista",
+                                choices = list("Simplificar eje x" = "simpx",
+                                               "Simplificar eje y" = "simpy"),
+                                multiple = T)
+        ),
+        #Panel donde se ve el resumen
+        tabPanel(title = "Resumen",  verbatimTextOutput("resumen")),
+        #Panel donde se ven los datos
+        tabPanel(title = "Data", tableOutput("tablajoin")),
+        #Panel donde se ve la relacion entre los niveles y sus respectivos numeros
+        # una vez hecha la simplificación de los ejes
+        tabPanel(title = "Levels", h3("Leyenda de simplificacion eje x"),
+                 verbatimTextOutput("summaryx"),
+                 h3("Leyenda de simplificacion eje y"),
+                 verbatimTextOutput("summaryy"))
+      )
     )
   )
 )
 #SERVER------------------------------------
 server <- function(input, output, session){
-    #Expresion reactiva que devuelve un vector con las columnas unicas disponibles
-    #que se encuentran en los datasets que se han seleccionado
-    vectores_disponibles <- reactive({
+    #Expresion reactiva que genera el conjunto de datos que sale de hacer un join de los dos datasets
+    joindatos <- reactive({
       #Abre y trata los datasets seleccionados en los select de la UI
       dataset_seleccionado_1 <- read.csv(paste("Input\\data\\", input$dataset1, sep = ""), sep = ";")
       dataset_seleccionado_1 <- TratamientoDatosGeneral(dataset_seleccionado_1)
       dataset_seleccionado_2 <- read.csv(paste("Input\\data\\", input$dataset2, sep = ""), sep = ";")
       dataset_seleccionado_2 <- TratamientoDatosGeneral(dataset_seleccionado_2)
-      #Crea una tabla que junta los datos de los datasets seleccionados con el objetivo de 
-      #utilizarlos de manera conjunta
+      #Si los dos sets de datos son el mismo, solo devuelve uno de ellos
       if(input$dataset1 == input$dataset2){
         joindatos <- dataset_seleccionado_1
-      } else{
-        joindatos <- merge(x = dataset_seleccionado_1, y = dataset_seleccionado_2, by = c("Sexo","Comunidades.y.Ciudades.Autónomas"))
+      } else{ #En caso contrario une los datasets utilizando cbind()
+        joindatos <- cbind(x = dataset_seleccionado_1, y = dataset_seleccionado_2)
+        #Elimina las columnas extras
+        joindatos$y.Sexo <- NULL 
+        joindatos$y.Comunidades.y.Ciudades.Autónomas <- NULL
       }
-      vector <- colnames(joindatos)
-      vector
+      #Cambia los datos en función del sexo que se quiere representar
+      if(input$sexorepresentar == "N/A"){
+        joindatos
+      }else {
+        joindatos[joindatos[,1] == input$sexorepresentar,]
+      }
+    })
+    #Expresion reactiva que devuelve un vector con las columnas unicas disponibles
+    #que se encuentran en los datasets que se han seleccionado
+    vectores_disponibles <- reactive({
+      colnames(joindatos())
     })
     #Observer que actualiza los selects de la UI con el vector que se obtiene de la expresión 
     #reactiva anterior
@@ -104,16 +134,7 @@ server <- function(input, output, session){
       })
     #Genera el plot final
     output$plot <- renderPlot({
-      #Inica todas las variables reactivas que se van a necesitar
-      dataset_seleccionado_1 <- read.csv(paste("Input\\data\\", input$dataset1, sep = ""), sep = ";")
-      dataset_seleccionado_1 <- TratamientoDatosGeneral(dataset_seleccionado_1)
-      dataset_seleccionado_2 <- read.csv(paste("Input\\data\\", input$dataset2, sep = ""), sep = ";")
-      dataset_seleccionado_2 <- TratamientoDatosGeneral(dataset_seleccionado_2)
-      if(input$dataset1 == input$dataset2){
-        joindatos <- dataset_seleccionado_1
-      } else{
-        joindatos <- merge(x = dataset_seleccionado_1, y = dataset_seleccionado_2, by = c("Sexo","Comunidades.y.Ciudades.Autónomas"))
-      }
+      joindatos <- joindatos()
       tipografico <- input$claseplot #Tipo de gráfico a representar
       elementomappingB <- input$elementomappingB #Elemento a mapear en el boxplot
       variablemapping <- input$variablemapping #Variable con la que se hace el mapping
@@ -121,16 +142,19 @@ server <- function(input, output, session){
       valorx <- input$valuex #Variable del eje x
       valory <- input$valuey #Variable del eje y
       sexo_representar <- input$sexorepresentar #Sexo que se quiere representar
-      #Cambia los datos en funcion del sexo que se quiere representar
-      if(sexo_representar != "N/A"){
-        joindatos <- joindatos[joindatos$Sexo == sexo_representar,]
+      #Simplifica los levels del ejex o del ejey si asi se escoge
+      if("simpx" %in% input$viewop){
+       levels(joindatos[[valorx]]) <- seq(1,length(joindatos[[valorx]]))
+      } 
+      if("simpy" %in% input$viewop){
+        levels(joindatos[[valory]]) <- seq(1,length(joindatos[[valory]]))
       }
-      #Crea el boxplot con los datos entregados en los parámetros
+      #Inicializa la gráfica con los datos elegidos e inserta los labels de los ejes
       p <- ggplot(data = joindatos, 
                   aes(x = .data[[valorx]] , y = .data[[valory]])) +
         xlab(valorx) + 
         ylab(valory) +
-        ggtitle(paste(input$dataset1,input$dataset2, sep = "/")) +
+        #Cambia el color y tamaño de los ejes
         theme(axis.title.x = element_text(colour = "Darkblue", size = 20),
               axis.title.y = element_text(colour = "Darkblue", size = 20),
               axis.text.x = element_text(size =15, colour = "black"),
@@ -138,6 +162,12 @@ server <- function(input, output, session){
               
               plot.title = element_text(size = 20, colour = "black", hjust = 0.5)
               )
+      #Determina el título de la gráfica
+      if(input$dataset1 == input$dataset2){
+        p <- p + ggtitle(input$dataset1)
+      } else{
+        p <- p + ggtitle(paste(input$dataset1, input$dataset2, sep = "/"))
+      }
       #Si el tipo de gráfico elgido es un boxplot
       if(tipografico == "Boxplot"){
         if(elementomappingB == "Jitter"){             #Pinta el jitter
@@ -155,23 +185,36 @@ server <- function(input, output, session){
         p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
       } 
     })
-  output$tablajoin <- renderTable({
-    dataset_seleccionado_1 <- read.csv(paste("Input\\data\\", input$dataset1, sep = ""), sep = ";")
-    dataset_seleccionado_1 <- TratamientoDatosGeneral(dataset_seleccionado_1)
-    dataset_seleccionado_2 <- read.csv(paste("Input\\data\\", input$dataset2, sep = ""), sep = ";")
-    dataset_seleccionado_2 <- TratamientoDatosGeneral(dataset_seleccionado_2)
-    if(input$dataset1 == input$dataset2){
-      joindatos <- dataset_seleccionado_1
-    } else{
-      joindatos <- merge(x = dataset_seleccionado_1, y = dataset_seleccionado_2, by = c("Sexo","Comunidades.y.Ciudades.Autónomas"))
-    }
-    if(input$sexorepresentar == "N/A"){
-      joindatos
-    }else {
-      joindatos[joindatos$Sexo == input$sexorepresentar,]
-    }
+    #Genera un output con los datos que se están representando en forma de tabla
+   output$tablajoin <- renderTable({
+    joindatos()
     })
-    
+   #Genera un output con el resumen de los datos que se representan
+   output$resumen <- renderPrint({
+    summary(joindatos())
+    }) 
+   #Genera un output que muestra la relacion entre los números 
+   #de simplificación en el eje x y sus valores en el dataset
+   output$summaryx <- renderPrint({
+     valorx <- input$valuex
+     x <- 1
+     for(r in levels(joindatos()[[valorx]])){
+       print(paste(x,r, sep = " ------> "))
+       x <- x + 1
+     }
+   }
+   #Genera un output que muestra la relacion entre los números 
+   #de simplificación en el eje y y sus valores en el dataset
+   )
+   output$summaryy <- renderPrint({
+     valory <- input$valuey
+     x <- 1
+     for(r in levels(joindatos()[[valory]])){
+       print(paste(x,r, sep = " ------> "))
+       x <- x + 1
+     }
+   }
+   )
 }
 #LLAMADA--------------------------------------
 shinyApp(ui <- ui, server <- server)

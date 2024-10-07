@@ -19,7 +19,7 @@ ui <- fluidPage(
   sidebarLayout(
     #El panel lateral izquierdo
     sidebarPanel(
-      #Se divide el panel en dos columnas
+      #Se divide el panel en dos columnasA
       column(6,
         #Se escoge el primer dataset a representar
         helpText(h5("Primer dataset a representar")),
@@ -48,7 +48,7 @@ ui <- fluidPage(
         #Se escoge el sexo que se quiere representar en los datos
         helpText(h5("Elige el Sexo a representar")),
         selectInput("sexorepresentar", "Sexo a Representar",
-                    choices = c("N/A","Hombres","Mujeres","Ambos sexos"))
+                    choices = c("N/A","Hombres","Mujeres","Ambos sexos", "Hombres/Mujeres"))
       ),
       conditionalPanel("input.claseplot == 'Boxplot'",
                       #Se escoge el elemento en el que se va a hacer el mapping
@@ -60,7 +60,7 @@ ui <- fluidPage(
       conditionalPanel("input.claseplot == 'Histograma'",
                        #Slider que modifica el ancho de las bandas
                        helpText(h5("Cambia el ancho de las bandas")),
-                       sliderInput("binwidth", "Ancho de banda", min = 0, max = 30, value = 5),
+                       sliderInput("binwidth", "Ancho de banda", min = 1, max = 30, value = 5),
                        helpText(h5("Cambia el color del fill del histograma en función de una variable"))
       ),
       #Escoge la variable con la que se quiere hacer el mapping
@@ -76,10 +76,14 @@ ui <- fluidPage(
         #Panel donde se observa el plot
         tabPanel(title = "Plot",
                  plotOutput("plot"),
-                 selectizeInput("viewop","Opciones de Vista",
-                                choices = list("Simplificar eje x" = "simpx",
-                                               "Simplificar eje y" = "simpy"),
-                                multiple = T)
+                 column(width = 6, selectizeInput("viewop","Opciones de Vista",
+                                                 choices = list("Simplificar eje x" = "simpx",
+                                                                "Simplificar eje y" = "simpy"),
+                                                 multiple = T)),
+                 column(width = 6, helpText("Guarda el gráfico en la carpeta de OutputPlot
+                                            Para ver el display de las gráficas ir al tab 'Guardados'")
+                        , actionButton("save", "Guardar Grafico",),
+                        textInput("filename", "Nombre del archivo", value = "plot 0")),
         ),
         #Panel donde se ve el resumen
         tabPanel(title = "Resumen",  verbatimTextOutput("resumen")),
@@ -90,7 +94,8 @@ ui <- fluidPage(
         tabPanel(title = "Levels", h3("Leyenda de simplificacion eje x"),
                  verbatimTextOutput("summaryx"),
                  h3("Leyenda de simplificacion eje y"),
-                 verbatimTextOutput("summaryy"))
+                 verbatimTextOutput("summaryy")),
+        tabPanel(title = "Guardados",uiOutput("imagenes"))
       )
     )
   )
@@ -116,6 +121,8 @@ server <- function(input, output, session){
       #Cambia los datos en función del sexo que se quiere representar
       if(input$sexorepresentar == "N/A"){
         joindatos
+      }else if(input$sexorepresentar == "Hombres/Mujeres"){
+        joindatos[joindatos[,1] == "Hombres" | joindatos[,1] == "Mujeres",]
       }else {
         joindatos[joindatos[,1] == input$sexorepresentar,]
       }
@@ -213,8 +220,30 @@ server <- function(input, output, session){
        print(paste(x,r, sep = " ------> "))
        x <- x + 1
      }
-   }
-   )
+   })
+   #Observador que guarda el último plot impreso en la carpeta designada
+   # para que se active hay que presionar el botón de guardar
+   observe({
+     ggsave(filename = paste(input$filename,".png"), path = "Output\\OutputPlot")
+     updateTextInput(session,"filename", value = paste("plot",input$save))
+   }) |> bindEvent(input$save)
+   imagename <- reactive({list.files("Output\\OutputPlot")})
+   observe({
+     for (name in imagename()){
+       output[[name]] <- 
+         renderImage({
+           path <- paste("Output\\OutputPlot\\", name, sep = "")
+           list(src = path, contentType = "image/png")
+         }, deleteFile = F)
+     } 
+   })
+   
+   #
+   output$imagenes <- renderUI({
+     for(name in imagename()){
+       imageOutput(name)
+     }
+   }) |> bindEvent(input$save)
 }
 #LLAMADA--------------------------------------
 shinyApp(ui <- ui, server <- server)

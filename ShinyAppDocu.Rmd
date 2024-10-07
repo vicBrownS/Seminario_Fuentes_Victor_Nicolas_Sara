@@ -1,0 +1,35 @@
+---
+title: "ShinnyAppDocu"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduccion
+
+Este documento de RMarkDown tiene el objetivo de ilustrar con rigurosidad el funcionamiento del Visor de datos usado en este seminario. Para ello, se explicaran como están formadas las diferentes partes de una aplicación Shiny y como estas interactuan entre ellas.
+
+Sin embargo, antes de introducirnos de lleno hay que aclarar unos conceptos claves para comprender una aplicación Shiny.
+
+## Conceptos clave
+
+### UI
+
+La UI o interfaz gráfica es la capa del programa con la que el usuario interactua y está constituida de widgets o elementos gráficos que permiten al usuario seleccionar, introducir, eliminar, accionar... De manera que se confiere interactividad a la aplicación. Estos parámetros que el usuario determina entran dentro de la categoria de INPUT y se podrá acceder a ellos desde el servidor
+
+### Server
+
+El server o servidor es la capa del programa en el que se producen todos los cálculos y procesos de la apliación. Se trata de una función con parámetros de input y de output.
+
+```{r, echo = False}
+server <- function(input,output){
+  #Logica del servidor
+}
+```
+
+### Llamada
+
+### Reactividad

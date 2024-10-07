@@ -19,7 +19,7 @@ ui <- fluidPage(
   sidebarLayout(
     #El panel lateral izquierdo
     sidebarPanel(
-      #Se divide el panel en dos columnasA
+      #Se divide el panel en dos columnas
       column(6,
         #Se escoge el primer dataset a representar
         helpText(h5("Primer dataset a representar")),
@@ -63,6 +63,11 @@ ui <- fluidPage(
                        sliderInput("binwidth", "Ancho de banda", min = 1, max = 30, value = 5),
                        helpText(h5("Cambia el color del fill del histograma en función de una variable"))
       ),
+      #Panel condicional que aparece si el gráfico a representar es un density chart
+      conditionalPanel("input.claseplot == 'Density'",
+                       helpText("Modifica la posicion de las areas de densidad respecto a las demás"),
+                       selectInput("densityposition","Posicion", choices = c("stack", "fill", "dodge"))
+                       ),
       #Escoge la variable con la que se quiere hacer el mapping
       selectInput("variablemapping","Variable con la que se quiere hacer mapping", 
                   choices = "N/A")
@@ -190,7 +195,11 @@ server <- function(input, output, session){
                     aes(x = .data[[valorx]])) #Quita el valor y del gráfico para adaptarse a un histograma
         #Pinta el histograma y rellena el fill con la categoria elegida
         p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
-      } 
+      } else if(tipografico == "Density"){
+        p <- ggplot(data = joindatos, 
+                    aes(x = .data[[valorx]]))
+       p + geom_density(aes(fill = .data[[variablemapping]]), position = input$densityposition)
+      }
     })
     #Genera un output con los datos que se están representando en forma de tabla
    output$tablajoin <- renderTable({
@@ -227,6 +236,7 @@ server <- function(input, output, session){
      ggsave(filename = paste(input$filename,".png"), path = "Output\\OutputPlot")
      updateTextInput(session,"filename", value = paste("plot",input$save))
    }) |> bindEvent(input$save)
+   
    imagename <- reactive({list.files("Output\\OutputPlot")})
    observe({
      for (name in imagename()){
@@ -237,13 +247,12 @@ server <- function(input, output, session){
          }, deleteFile = F)
      } 
    })
-   
-   #
    output$imagenes <- renderUI({
      for(name in imagename()){
        imageOutput(name)
      }
    }) |> bindEvent(input$save)
+   
 }
 #LLAMADA--------------------------------------
 shinyApp(ui <- ui, server <- server)

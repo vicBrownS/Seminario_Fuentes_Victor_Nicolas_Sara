@@ -1,11 +1,18 @@
 ---
 title: "ShinnyAppDocu"
-output: html_document
+output: 
+  html_document:
+    toc: TRUE
+    toc_depth: 3
+    theme: united  
+    highlight: tango  
 date: "`r Sys.Date()`"
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(shiny)
 ```
 
 ## Introduccion
@@ -24,12 +31,91 @@ La UI o interfaz gráfica es la capa del programa con la que el usuario interact
 
 El server o servidor es la capa del programa en el que se producen todos los cálculos y procesos de la apliación. Se trata de una función con parámetros de input y de output.
 
-```{r, echo = False}
+```{r, message = F, warning=FALSE}
 server <- function(input,output){
   #Logica del servidor
 }
 ```
 
-### Llamada
+### Call
+
+El Call o llamada es la linea de codigo que inicializa la apliación e integra la UI y el SERVER
+
+```{r eval=FALSE, message=TRUE, warning=FALSE}
+UI <- fluidPage()
+SERVER <- function(input,output){}
+shinyApp(ui <- UI, server <- SERVER)
+```
 
 ### Reactividad
+
+Un proceso o una variable se considera reactiva cuando su valor no es fijo y se puede actualizar en función de los inputs que inserte el usuario.
+
+La reactividad es la base de las aplicaciones shiny y es indispensable su uso para el funcionamiento de la aplicación.
+
+Existen varios tipos de entornos reactivos en shiny, los usados en la aplicación son los siguientes:
+
+-   `reactive({})`
+
+-   `observe({})`
+
+-   Funciones tipo render (e.j `renderImage()`, `renderText()`, `renderUI()`...)
+
+Unicamente dentro de estos entornos reactivos se puede hacer uso de la reactividad de las variables.
+
+### Input
+
+El parametro *input* se trata de una lista que se inserta en la función server como parámetro y nos da la capacidad de acceder a la información que el usuario inserta o determina en la UI.
+
+Para ello se utiliza el operador *\$* seguido del *inputid* (e.j input\$archivoGuardado)
+
+```{r,eval=FALSE, warning=FALSE,message=FALSE}
+server <- function(input,output){
+  # Lógica del server
+  var1 <- input$archivoGuardado #Asignacion de la variable con el operador $
+}
+```
+
+### Output
+
+El parametro output es una lista que se inserta en la función server como parámetro, en está lista se insertarán los diferentes outputs que se generen en el server para que puedan ser usados posteriormente en la UI o donde se requiera su uso.
+
+Para crear un output se utiliza el operador \$ seguido del outputid (e.j output\$imagen)
+
+```{r, eval = FALSE, message=FALSE}
+#Interfaz donde se utliza el output
+ui <- fluidPage({ 
+  title = "Ejemplo"
+  textOutput("texto") #Imprime el texto generado por el output
+})
+#Servidor donde se genera el output
+server <- function(input,output){
+  output$texto <- renderText("Texto de ejemplo") #Crea el output con el id texto
+}
+#Lanza la aplicacion
+shinyApp(ui <- ui, server <- server)
+```
+
+## Visor de datos-Funcionamiento
+
+El visor de datos tiene como objetivo la visualización interactiva de los datasets que van a ser usados para el seminario. Estos datasets serán exportados como csv (separados por ';') y tienen que estar estructurados por columnas de la siguiente forma:
+
+Sexo-Comunidad Autonoma-Dato Categorico- Total relativo(%)
+
+Para más explicaciones del porque remitirse a la documentación de la función `TratamientoDatosGeneral()` del archivo Funciones.R
+
+### Preambulo
+
+Previo al inicio de la apliación se ejecuta el siguiente codigo, el cual es indispensable para el funcionamiento de la misma.
+
+```{r, eval = FALSE}
+library(shiny)
+library(ggplot2)
+source("Input\\Funciones.R")
+datasets <- list.files("Input\\data")
+claseplot <- c("Boxplot", "Histograma", "Density")
+```
+
+En esta pequeña porción del codigo de cargan las librerias shiny y ggplot que se utilizarán durante todo el documento. También se hace `source()` del script que contiene las funciones. Además se cargan dos vectores; El primero, `datasets`, contiene todos los archivos dentro de la carpeta *data* donde, presuntamente, solo debería haber los csv correspondientes a los datasets a representar. El segundo vector, `claseplot`, contiene los tipos de gráfico que se van a poder representar con la aplicación.
+
+### Interfaz Gráfica (UI)

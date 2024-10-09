@@ -1,12 +1,16 @@
 ---
 title: "Documentacion Visor de datos"
 output: 
-  html_document:
-    toc: TRUE
+  html_document: 
+    toc: true
     toc_depth: 6
-    toc_float: TRUE
-    theme: united  
-    highlight: tango  
+    toc_float: true
+    theme: united
+    highlight: tango
+  html_notebook: 
+    toc: true
+    toc_depth: 6
+    highlight: tango
 date: "`r Sys.Date()`"
 runtime: shiny
 ---
@@ -185,7 +189,7 @@ column(6,
 )
 ```
 
-![](Input/Imagenes Documentacion/Widgets/dataset1.png)
+![](Input/Imagenes%20Documentacion/Widgets/dataset1.png)
 
 ##### Dataset 2 (SelectInput)
 
@@ -214,7 +218,7 @@ column(6,
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/dataset2.png)
+![](Input/Imagenes%20Documentacion/Widgets/dataset2.png)
 
 ##### Eje x (SelectInput) {#eje-x-selectinput}
 
@@ -240,7 +244,7 @@ column(6,
 )
 ```
 
-![](Input/Imagenes Documentacion/Widgets/valuex.png)
+![](Input/Imagenes%20Documentacion/Widgets/valuex.png)
 
 ##### Eje y (SelectInput)
 
@@ -268,9 +272,9 @@ column(6,
 )
 ```
 
-![](Input/Imagenes Documentacion/Widgets/valuey.png)
+![](Input/Imagenes%20Documentacion/Widgets/valuey.png)
 
-##### Tipo de gráfico (SelectInput)
+##### Tipo de gráfico (SelectInput) {#tipo-de-gráfico-selectinput}
 
 **INPUTID: claseplot**
 
@@ -295,7 +299,7 @@ column(6,
 )
 ```
 
-![](Input/Imagenes Documentacion/Widgets/claseplot.png)
+![](Input/Imagenes%20Documentacion/Widgets/claseplot.png)
 
 ##### Sexo a Representar (SelectInput)
 
@@ -323,11 +327,11 @@ column(6,
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/sexoarepresentar.png)
+![](Input/Imagenes%20Documentacion/Widgets/sexoarepresentar.png)
 
 ##### Panel condicional Boxplot
 
-El panel condicional es una estructura que se muestra en la interfaz si se cumple cierta condición, en este caso, el panel se mostrará si el input elegido en el widget [Tipo de gráfico (SelectInput)] es `Boxplot`.
+El panel condicional es una estructura que se muestra en la interfaz si se cumple cierta condición, en este caso, el panel se mostrará si el input elegido en el widget [Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput) es `Boxplot`.
 
 Este panel contendrá los widgets que seleccionen variables que sean relevantes solamente a los [Boxplots](https://es.wikipedia.org/wiki/Diagrama_de_caja), evitando así la aparición de elementos inútiles en la interfaz.
 
@@ -375,11 +379,11 @@ sidebarPanel(
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/elementomappingB.png)
+![](Input/Imagenes%20Documentacion/Widgets/elementomappingB.png)
 
 ##### Panel condicional Histograma
 
-El panel condicional es una estructura que se muestra en la interfaz si se cumple cierta condición, en este caso, el panel se mostrará si el input elegido en el widget [Tipo de gráfico (SelectInput)] es `Histograma`.
+El panel condicional es una estructura que se muestra en la interfaz si se cumple cierta condición, en este caso, el panel se mostrará si el input elegido en el widget [Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput) es `Histograma`.
 
 Este panel contendrá los widgets que seleccionen variables que sean relevantes solamente a los Histogramas, evitando así la aparición de elementos inútiles en la interfaz.
 
@@ -425,11 +429,11 @@ sidebarPanel(
 )
 ```
 
-![](Input/Imagenes Documentacion/Widgets/binwidth.png)
+![](Input/Imagenes%20Documentacion/Widgets/binwidth.png)
 
 ##### Panel condicional Density Chart
 
-El panel condicional es una estructura que se muestra en la interfaz si se cumple cierta condición, en este caso, el panel se mostrará si el input elegido en el widget [Tipo de gráfico (SelectInput)] es `Density`.
+El panel condicional es una estructura que se muestra en la interfaz si se cumple cierta condición, en este caso, el panel se mostrará si el input elegido en el widget [Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput) es `Density`.
 
 Este panel contendrá los widgets que seleccionen variables que sean relevantes solamente a las density charts, evitando así la aparición de elementos inútiles en la interfaz.
 
@@ -473,9 +477,9 @@ sidebarPanel(
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/densityposition.png)
+![](Input/Imagenes%20Documentacion/Widgets/densityposition.png)
 
-##### Variable para mapear
+##### Variable para mapear (SelectInput)
 
 **INPUTID: variablemapping**
 
@@ -500,11 +504,41 @@ sidebarPanel(
 )
 ```
 
-![](Input/Imagenes Documentacion/Widgets/variablemapping.png)
+![](Input/Imagenes%20Documentacion/Widgets/variablemapping.png)
 
 #### Mainpanel
 
-El mainPanel o panel principal alojará todos los outputs generados por el server como la gráfica, el resumen del dataset, el propio dataset, etc. Para la mejor visualización de la información proveniente de los outputs se organizará el panel principal en tabs o ventanas, cada una de ellas contendrá un output distinto. Para ver más sobre tabs en shiny ver [aquí](https://shiny.posit.co/r/getstarted/build-an-app/customizing-ui/tabs.html)
+El mainPanel o panel principal alojará todos los outputs generados por el server como la gráfica, el resumen del dataset, el propio dataset, etc. Para la mejor visualización de la información proveniente de los outputs se organizará el panel principal en tabs o ventanas, cada una de ellas contendrá un output distinto. Para ver más sobre tabs en shiny ver [aquí](https://shiny.posit.co/r/getstarted/build-an-app/customizing-ui/tabs.html).
+
+La descripción del panel principal se organizará por tabs, y en cada una se detallará cada componente y output que la forman. Todas las tabs estarán dentro de la función [`navbarPage()`](https://shiny.posit.co/r/reference/shiny/latest/navbarpage)`.`
+
+##### Panel plot
+
+En este panel se renderizará el output que contiene la gráfica, para ello se utiliza la función `plotOutput()` cuyo unico parámetro es el outputid del gráfico(#TODO link al server) a representar, además de varios widgets que ayudarán a la representación y que permiten guardar la imagen de la gráfica.
+
+El código del panel con el output es el siguiente:
+
+```{r, eval=F}
+mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        title = strong("VISTA"),
+        #Panel donde se observa el plot
+        tabPanel(title = "Plot",
+                 plotOutput("plot"), #oUTPUT DEL PLOT
+                 
+                 #WIDGETS QUE CONTIENE EL PANEL
+                 
+        )
+      )
+)
+```
+
+###### Opciones de vista
+
+[SelectizeInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput)
+
+**INPUTID: variablemapping**
 
 ### Server {data-link="Server"}
 
@@ -519,61 +553,6 @@ El mainPanel o panel principal alojará todos los outputs generados por el serve
 ui <- fluidPage(
   #Titulo de la pagina
   titlePanel(h2("Visor de datos")),
-  #Utilizamos un sidebarLayout
-  sidebarLayout(
-    #El panel lateral izquierdo
-    sidebarPanel(
-      #Se divide el panel en dos columnas
-      column(6,
-        #Se escoge el primer dataset a representar
-        helpText(h5("Primer dataset a representar")),
-        selectInput("dataset1", "Dataset 1", 
-                    choices = datasets),
-        #Se escoge el valor del eje x
-        helpText(h5("Selecciona el valor x")),
-        selectInput("valuex", "Eje x", 
-                    choices = "N/A"),
-        #Se escoge el gráfico a representar
-        helpText(h5("Permite seleccionar el tipo de gráfico a representar")),
-        selectInput("claseplot", "Tipo de gráfico",
-                    choices = claseplot)
-        
-      ),
-      #Segunda columna
-      column(6,
-        #Se escoge el segundo dataset a representar
-        helpText(h5("Segundo dataset a representar")),
-        selectInput("dataset2", "Dataset 2", 
-                    choices = datasets),
-        #Se escoge el valor a representar en el eje y
-        helpText(h5("Selecciona el valor y")),
-        selectInput("valuey", "Eje y", 
-                    choices = "N/A"),
-        v
-      ),
-      conditionalPanel("input.claseplot == 'Boxplot'",
-                      #Se escoge el elemento en el que se va a hacer el mapping
-                      helpText(h5("Cambia el color de los elementos del gráfico en funcion de otra variable")),
-                      radioButtons("elementomappingB", "Elemento que hace el mapping",
-                                   choices = c("Jitter", "Box", "N/A"))
-      ),
-      #Panel condicional que se muestra si el gráfico a representar es un histograma
-      conditionalPanel("input.claseplot == 'Histograma'",
-                       #Slider que modifica el ancho de las bandas
-                       helpText(h5("Cambia el ancho de las bandas")),
-                       sliderInput("binwidth", "Ancho de banda", min = 1, max = 30, value = 5),
-                       helpText(h5("Cambia el color del fill del histograma en función de una variable"))
-      ),
-      #Panel condicional que aparece si el gráfico a representar es un density chart
-      conditionalPanel("input.claseplot == 'Density'",
-                       helpText("Modifica la posicion de las areas de densidad respecto a las demás"),
-                       selectInput("densityposition","Posicion", choices = c("stack", "fill", "dodge"))
-                       ),
-      #Escoge la variable con la que se quiere hacer el mapping
-      selectInput("variablemapping","Variable con la que se quiere hacer mapping", 
-                  choices = "N/A")
-      
-    ),
     #Panel principal donde se inprime el gráfico
     mainPanel(
       #Barra de navegación para acceder a los distintos elementos

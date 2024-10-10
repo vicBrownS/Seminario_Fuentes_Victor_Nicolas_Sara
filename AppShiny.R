@@ -116,11 +116,13 @@ server <- function(input, output, session){
       #Si los dos sets de datos son el mismo, solo devuelve uno de ellos
       if(input$dataset1 == input$dataset2){
         joindatos <- dataset_seleccionado_1
-      } else{ #En caso contrario une los datasets utilizando cbind()
+      } else if(nrow(dataset_seleccionado_1) == nrow(dataset_seleccionado_2)){ #En caso contrario une los datasets utilizando cbind()
         joindatos <- cbind(x = dataset_seleccionado_1, y = dataset_seleccionado_2)
         #Elimina las columnas extras
         joindatos$y.Sexo <- NULL 
         joindatos$y.Comunidades.y.Ciudades.Autónomas <- NULL
+      } else{
+        joindatos <- dataset_seleccionado_1
       }
       #Cambia los datos en función del sexo que se quiere representar
       if(input$sexorepresentar == "N/A"){

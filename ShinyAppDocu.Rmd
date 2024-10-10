@@ -12,7 +12,6 @@ output:
     toc_depth: 6
     highlight: tango
 date: "`r Sys.Date()`"
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -534,11 +533,144 @@ mainPanel(
 )
 ```
 
+![](Input/Imagenes Documentacion/panelplot.png)
+
 ###### Opciones de vista
 
-[SelectizeInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput)
+**INPUTID: viewop**
 
-**INPUTID: variablemapping**
+[SelectizeInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput) que permite escoger una o multiples opciones que modifican la vista de la gráfica. Todas estas opciones son generales y comunes a todas las gráficas, excepto casos obvios donde no haya funcionalidad. Las diferentes variables entre las que escoger son:
+
+-Simplificar eje x (id: simpx): esta opción modifica los niveles de la variable categorica que hay en el eje x y los sustituye por valores numericos desde el 1 hasta el número de niveles que haya. Esta opción se utiliza cuando las categorias son tan largas que no se leen en el gráfico. Su implementación en el server es aquí(#TODO)
+
+-Simplificar eje y (id: simpy): Similar a simpx, pero en el eje y. Su implementación en el server es aquí(#TODO)
+
+El código que forma este widget es el siguiente:
+
+```{r, eval = F}
+mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        title = strong("VISTA"),
+        #Panel donde se observa el plot
+        tabPanel(title = "Plot",
+          plotOutput("plot"), # plot output
+            column(
+              width = 6, selectizeInput("viewop","Opciones de Vista", 
+              choices = list("Simplificar eje x" = "simpx",
+                          "Simplificar eje y" = "simpy"),multiple = T))
+          #RESTO DE LA COLUMNA
+        )
+      )
+)
+```
+
+![](Input/Imagenes Documentacion/Widgets/viewop.png){width="408"}
+
+###### Guardar gráfico (ActionButton)
+
+**INPUTID: save**
+
+[ActionButton](https://shiny.posit.co/r/reference/shiny/latest/actionbutton) que, al ser pulsado, guarda el dibujo de la ultima gráfica generada en la carpeta de `Output\OutputPlot`. Los ActionButton pueden ligar el evento de pulsarlo con cualquier otra funcionalidad, para ver la implementación en el server ver aquí (#TODO).
+
+El código que forma este widget es el siguiente:
+
+```{r, eval = F}
+#Panel principal donde se inprime el gráfico
+    mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        #Panel donde se observa el plot
+        tabPanel(title = "Plot",
+                 plotOutput("plot"),
+                 
+                 #RESTO DEL PANEL
+                 
+          column(width = 6, helpText("Guarda el gráfico en la carpeta de OutputPlot
+                 Para ver el display de las gráficas ir al tab 'Guardados'")
+                , actionButton("save", "Guardar Grafico")
+          )
+        )
+      )
+    )
+```
+
+![](Input/Imagenes Documentacion/Widgets/save.png)
+
+###### Nombre del Archivo
+
+**INPUTID: filename**
+
+[TextInput](https://shiny.posit.co/r/reference/shiny/latest/textinput) que permite al usuario determinar el nombre del archivo PNG en el que se guardará la foto de la gráfica, este TextInput tiene un valor inicial predeterminado que se va actualizando para evitar duplicados en el caso de que no se escoja un nombre manualmente. Este valor se actualiza en el server con la función [`updateTextInput()`](https://shiny.posit.co/r/reference/shiny/latest/updatetextinput) aquí (#TODO)
+
+El código que forma este widget es el siguiente:
+
+```{r, eval = F}
+#Panel principal donde se inprime el gráfico
+    mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        #Panel donde se observa el plot
+        tabPanel(title = "Plot",
+                 plotOutput("plot"),
+              
+                 #RESTO DEL PANEL
+                 
+                 textInput("filename", "Nombre del archivo", value = "plot 0"))
+        )
+    )
+
+
+```
+
+![](Input/Imagenes Documentacion/Widgets/filename.png)
+
+##### Panel Resumen
+
+En este panel se renderizará el output que contiene el resumen de los datos, para ello se utiliza la función [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput) cuyo unico parámetro es el outputid del resumen(#TODO link al server).
+
+El código del panel con el output es el siguiente:
+
+```{r, eval = F}
+mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        title = strong("VISTA"),
+        
+        #PANEL DEL PLOT
+        
+        #Panel donde se ve el resumen
+        tabPanel(title = "Resumen",  verbatimTextOutput("resumen"))
+      )
+)
+```
+
+![](Input/Imagenes Documentacion/panelresumen.png)
+
+##### Panel data
+
+En este panel se renderizará el output que contiene la tabla con los datos que se representan, la tabla con los datos se genera en el server aquí(#TODO) y el output se genera aquí(#TODO link al server).
+
+La función para imprimir el output es [`tableOutput()`](https://shiny.posit.co/r/reference/shiny/latest/rendertable) cuyo unico parámetro es el outputid de la tabla.
+
+El código del panel con el output es el siguiente:
+
+```{r, eval = F}
+mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        title = strong("VISTA"),
+        
+        #PANEL DEL PLOT
+        
+        #PANEL DE RESUMEN
+        
+        #Panel donde se ven los datos
+        tabPanel(title = "Data", tableOutput("tablajoin"))
+      )
+)
+
+```
 
 ### Server {data-link="Server"}
 

@@ -7,10 +7,7 @@ output:
     toc_float: true
     theme: united
     highlight: tango
-  html_notebook: 
-    toc: true
-    toc_depth: 6
-    highlight: tango
+    css: "Input\\style.css"  
 date: "`r Sys.Date()`"
 ---
 
@@ -671,6 +668,36 @@ mainPanel(
 )
 
 ```
+
+##### Panel levels
+
+En este panel se renderizará la relación entre los niveles de las variables que se representan y sus niveles una vez aplicada la simplificación utilizando las opciones de simpx y simpy ([Opciones de vista]). El texto con esta información se renderiza en el server aquí (#TODO).
+
+La función que imprime el output es [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput)
+
+El código del panel con el output es el siguiente:
+
+```{r, eval = F}
+mainPanel(
+      #Barra de navegación para acceder a los distintos elementos
+      navbarPage(
+        title = strong("VISTA"),
+        
+        #PANEL DEL PLOT
+        
+        #Panel donde se ve la relacion entre los niveles y sus respectivos numeros
+        # una vez hecha la simplificación de los ejes
+        tabPanel(title = "Levels", h3("Leyenda de simplificacion eje x"),
+                 verbatimTextOutput("summaryx"),
+                 h3("Leyenda de simplificacion eje y"),
+                 verbatimTextOutput("summaryy")),
+      )
+)
+```
+
+![](Input/Imagenes Documentacion/panellevels.png){width="467"}
+
+##### Panel guardados (#TODO)
 
 ### Server {data-link="Server"}
 

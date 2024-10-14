@@ -1,7 +1,8 @@
 # Calidad de vida, hábitos y zonas verdes
  Repositorio creado y desarrollado por alumnos del grupo 101 de la asignatura "Fuentes de Datos Biomédicas y Web Semántica" del grado en Ingeniería de la Salud en la Universidad de Burgos.
  
-![image](https://github.com/user-attachments/assets/0bb00280-631b-4516-87cf-8eb3229f3f99)
+![Imagen README mediana](https://github.com/user-attachments/assets/5c075366-fcde-475b-8444-f50c944512ed)
+
  
  # Integrantes del grupo
  Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López

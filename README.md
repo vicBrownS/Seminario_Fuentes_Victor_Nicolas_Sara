@@ -17,7 +17,7 @@ Este seminario aborda la interconexión entre el bienestar urbano y la disponibi
 2. Analizar cómo la presencia de áreas naturales influye en la adopción de hábitos saludables y en la cohesión social.
 3. Proponer estrategias sostenibles para aumentar y mejorar los espacios verdes en entornos urbanos.
    
-# Metodologia
+# Metodología
 
 #### Objetivo 1
 Análisis de datos con R Studio: Se utilizarán bases de datos abiertas para realizar análisis estadísticos sobre la relación entre zonas verdes y calidad de vida, incluyendo regresiones y modelos predictivos para evaluar el impacto en la salud física y mental.

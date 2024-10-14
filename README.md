@@ -3,21 +3,24 @@
  
 ![image](https://github.com/user-attachments/assets/19dbca6a-443f-46e3-b8a5-f761bd316bc6)
 
- # Integrantes del grupo
+ ## Integrantes del grupo
  Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López
  
-# Título del proyecto
+## Título del proyecto
 Relación entre calidad de vida, hábitos y zonas verdes
 
-# Introducción
+## Introducción
 Este seminario aborda la interconexión entre el bienestar urbano y la disponibilidad de espacios naturales. Partiendo de un enfoque holístico, se examinará cómo las zonas verdes influyen en la salud física, mental y social de las personas, así como en la promoción de estilos de vida saludables. Además, se explorarán investigaciones recientes que destacan la importancia de estos espacios para reducir el estrés, mejorar la cohesión social y fomentar una vida más activa. Finalmente, se debatirán propuestas innovadoras para integrar de manera efectiva más áreas verdes en las ciudades contemporáneas.
 
-# Objetivo
+## Objetivo general 
+Estudiar la relación entre calidad de vida, hábitos y zonas verdes con el fin de obtener estadísticas y gráficos que muestren la evolución de estas variables según la provincia en España. 
+
+## Objetivos específicos
 1. Explorar el impacto de las zonas verdes en la mejora de la calidad de vida, tanto a nivel físico como emocional.
 2. Analizar cómo la presencia de áreas naturales influye en la adopción de hábitos saludables y en la cohesión social.
 3. Proponer estrategias sostenibles para aumentar y mejorar los espacios verdes en entornos urbanos.
    
-# Metodología
+# Metodología y Resultados
 
 #### Objetivo 1
 Análisis de datos con R Studio: Se utilizarán bases de datos abiertas para realizar análisis estadísticos sobre la relación entre zonas verdes y calidad de vida, incluyendo regresiones y modelos predictivos para evaluar el impacto en la salud física y mental.
@@ -27,3 +30,9 @@ Visualización interactiva con Shiny: Se desarrollarán aplicaciones interactiva
 
 #### Objetivo 3
 Propuestas urbanísticas y simulaciones: Con Shiny, se simularán estrategias de expansión de zonas verdes en entornos urbanos. Los participantes podrán diseñar y visualizar propuestas de planificación sostenible, evaluando su viabilidad e impacto mediante modelos interactivos.
+
+## Conclusiones generales
+Con la información recabada hemos podido comprobar cómo afecta la actividad física y el estilo de vida saludable a la salud de los individuos. 
+
+## Referencias
+Bibtex

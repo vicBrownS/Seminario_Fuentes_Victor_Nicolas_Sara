@@ -18,8 +18,12 @@ Este seminario aborda la interconexión entre el bienestar urbano y la disponibi
 3. Proponer estrategias sostenibles para aumentar y mejorar los espacios verdes en entornos urbanos.
    
 # Metodologia
-Objetivo 1. Análisis de datos con R Studio: Se utilizarán bases de datos abiertas para realizar análisis estadísticos sobre la relación entre zonas verdes y calidad de vida, incluyendo regresiones y modelos predictivos para evaluar el impacto en la salud física y mental.
 
-Objetivo 2. Visualización interactiva con Shiny: Se desarrollarán aplicaciones interactivas en Shiny para explorar datos sobre hábitos saludables y uso de espacios verdes, permitiendo a los participantes filtrar variables y observar patrones de comportamiento en tiempo real.
+#### Objetivo 1. 
+Análisis de datos con R Studio: Se utilizarán bases de datos abiertas para realizar análisis estadísticos sobre la relación entre zonas verdes y calidad de vida, incluyendo regresiones y modelos predictivos para evaluar el impacto en la salud física y mental.
 
-Objetivo 3. Propuestas urbanísticas y simulaciones: Con Shiny, se simularán estrategias de expansión de zonas verdes en entornos urbanos. Los participantes podrán diseñar y visualizar propuestas de planificación sostenible, evaluando su viabilidad e impacto mediante modelos interactivos.
+#### Objetivo 2. 
+Visualización interactiva con Shiny: Se desarrollarán aplicaciones interactivas en Shiny para explorar datos sobre hábitos saludables y uso de espacios verdes, permitiendo a los participantes filtrar variables y observar patrones de comportamiento en tiempo real.
+
+#### Objetivo 3. 
+Propuestas urbanísticas y simulaciones: Con Shiny, se simularán estrategias de expansión de zonas verdes en entornos urbanos. Los participantes podrán diseñar y visualizar propuestas de planificación sostenible, evaluando su viabilidad e impacto mediante modelos interactivos.

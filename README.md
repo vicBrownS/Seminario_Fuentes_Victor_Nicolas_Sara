@@ -1,7 +1,8 @@
 # Calidad de vida, hábitos y zonas verdes
  Repositorio creado y desarrollado por alumnos del grupo 101 de la asignatura "Fuentes de Datos Biomédicas y Web Semántica" del grado en Ingeniería de la Salud en la Universidad de Burgos.
  
- ![image](https://github.com/user-attachments/assets/380c9519-7efd-40d2-ae66-09e4963bc0e6)
+![image](https://github.com/user-attachments/assets/c9ab37b0-1deb-4f75-aa08-881bd9f04338)
+
  
  Para obtener mayor información acerca del proyecto, consultar la Wiki del repositorio.
  

@@ -3,8 +3,6 @@
  
 ![image](https://github.com/user-attachments/assets/0bb00280-631b-4516-87cf-8eb3229f3f99)
  
- Para obtener mayor información acerca del proyecto, consultar la Wiki del repositorio.
- 
  # Integrantes del grupo
  Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López
  
@@ -21,6 +19,3 @@ El descanso es fundamental para un buen rendimiento físico y mental, especialme
 Objetivo 1
 Objetivo 2
 Objetivo 3
-
-# Más información
-Para obtener mayor información acerca del proyecto, consultar la Wiki del repositorio.

@@ -18,6 +18,8 @@ ui <- fluidPage(
   sidebarLayout(
     #El panel lateral izquierdo
     sidebarPanel(
+      helpText("SI LOS DATASETS A REPRESENTAR NO TIENEN EL MISMO NUMERO DE FILAS SOLO
+               SE REPRESENTARÁ EL PRIMERO"),
       #Se divide el panel en dos columnas
       column(6,
         #Se escoge el primer dataset a representar
@@ -87,7 +89,7 @@ ui <- fluidPage(
                  column(width = 6, helpText("Guarda el gráfico en la carpeta de OutputPlot
                                             Para ver el display de las gráficas ir al tab 'Guardados'")
                         , actionButton("save", "Guardar Grafico",),
-                        textInput("filename", "Nombre del archivo", value = "plot 0")),
+                        textInput("filename", "Nombre del archivo", value = "plot0")),
         ),
         #Panel donde se ve el resumen
         tabPanel(title = "Resumen",  verbatimTextOutput("resumen")),
@@ -99,7 +101,52 @@ ui <- fluidPage(
                  verbatimTextOutput("summaryx"),
                  h3("Leyenda de simplificacion eje y"),
                  verbatimTextOutput("summaryy")),
-        tabPanel(title = "Guardados",uiOutput("imagenes"))
+        tabPanel(title = "Guardados",
+                 selectizeInput("images","Elige las imagenes a representar",
+                                choices = list.files("Output\\OutputPlot"),
+                                multiple = T),
+                 imageOutput("imagen1"),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 imageOutput("imagen2"),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 imageOutput("imagen3"),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 br(),
+                 imageOutput("imagen4")
+        ),
+        tabPanel("GetData",
+                 column(4, 
+                        selectizeInput("wanteddata", "Dato que quieres hallar",
+                                          choices = c("media","min","max","mediana"),
+                                          multiple = T)),
+                 column(4, selectInput("wanteddataset", "Dataset del que sacar el dato",
+                                       choices = datasets)),
+                column(4,selectInput("wantedsexo", "Sexo", 
+                              choices = c("N/A","Hombres","Mujeres","Ambos sexos", "Hombres/Mujeres"))),
+                verbatimTextOutput("gotdata"),
+                column(3, selectInput("wantedcategoric", "Variable categorica",
+                                      choices = "N/A"))
+        )        
       )
     )
   )
@@ -233,26 +280,81 @@ server <- function(input, output, session){
    })
    #Observador que guarda el último plot impreso en la carpeta designada
    # para que se active hay que presionar el botón de guardar
-   observe({
-     ggsave(filename = paste(input$filename,".png"), path = "Output\\OutputPlot")
-     updateTextInput(session,"filename", value = paste("plot",input$save))
-   }) |> bindEvent(input$save)
    
-   imagename <- reactive({list.files("Output\\OutputPlot")})
    observe({
-     for (name in imagename()){
-       output[[name]] <- 
-         renderImage({
-           path <- paste("Output\\OutputPlot\\", name, sep = "")
-           list(src = path, contentType = "image/png")
-         }, deleteFile = F)
-     } 
-   })
-   output$imagenes <- renderUI({
-     for(name in imagename()){
-       imageOutput(name)
-     }
+     ggsave(filename = paste(input$filename,".png", sep = ""), path = "Output\\OutputPlot",
+            width = 1100, height = 500, units = "px", dpi = 100)
+     updateTextInput(session,"filename", value = paste("plot",input$save, sep = ""))
+     updateSelectizeInput(session, "images", choices = list.files("Output\\OutputPlot"))
    }) |> bindEvent(input$save)
+   #Imagen 1
+   output$imagen1 <- renderImage({
+      path <- paste("Output\\OutputPlot\\", input$images[1], sep = "")
+      list(src = path,
+           width = "1100",
+           height = "500",
+           scale = 0.5,
+           alt = h3("Selecciona una imagen"))
+    }, deleteFile = F)
+   #Imagen 2
+   output$imagen2 <- renderImage({
+     path <- paste("Output\\OutputPlot\\", input$images[2], sep = "")
+     list(src = path,
+          width = "1100",
+          height = "500",
+          scale = 0.5,
+          alt = h3("Selecciona una imagen"))
+   }, deleteFile = F)
+   #Imagen 3
+   output$imagen3 <- renderImage({
+     path <- paste("Output\\OutputPlot\\", input$images[3], sep = "")
+     list(src = path,
+          width = "1100",
+          height = "500",
+          scale = 0.5,
+          alt = h3("Selecciona una imagen"))
+   }, deleteFile = F)
+   #Imagen 4
+   output$imagen4 <- renderImage({
+     path <- paste("Output\\OutputPlot\\", input$images[4], sep = "")
+     list(src = path,
+          width = "1100",
+          height = "500",
+          scale = 0.5,
+          alt = h3("Selecciona una imagen"))
+   }, deleteFile = F)
+   observe({
+     wanteddataset <- read.csv(paste("Input\\data\\", input$wanteddataset, sep = ""), sep = ";")
+     wanteddatasetT <- TratamientoDatosGeneral(wanteddataset)
+     updateSelectInput(session = session, inputId = "wantedcategoric", choices = levels(wanteddatasetT[,3]))
+   })
+  #Output de datos
+   output$gotdata <- renderPrint({
+    dataset <- read.csv(paste("Input\\data\\", input$wanteddataset, sep = ""), sep = ";")
+    dataset <- TratamientoDatosGeneral(dataset)
+    if(input$wantedsexo == "Hombres/Mujeres"){
+       dataset <- dataset[dataset[,1] == "Hombres" | dataset[,1] == "Mujeres",]
+    } else if(input$wantedsexo != "N/A"){
+       dataset <- dataset[dataset[,1] == input$wantedsexo,]
+    }
+    dataset <- dataset[dataset[,3] == input$wantedcategoric,]
+     if("media" %in% input$wanteddata){
+       media <- sum(dataset[,4])/nrow(dataset)
+       print(paste("MEDIA:", media, sep = " "))
+     } 
+     if("min" %in% input$wanteddata){
+       min <- min(dataset[,4])
+       print(paste("MIN:", min, sep = " "))
+     }
+     if("max" %in% input$wanteddata){
+       max <- max(dataset[,4])
+       print(paste("MAX:", max, sep = " "))
+     }
+     if("mediana" %in% input$wanteddata){
+       median = median(dataset[,4])
+       print(paste("MEDIANA:", median, sep = " "))
+     }
+  })
    
 }
 #LLAMADA--------------------------------------

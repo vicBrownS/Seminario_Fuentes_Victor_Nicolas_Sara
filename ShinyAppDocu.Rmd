@@ -349,7 +349,7 @@ sidebarPanel(
 )
 ```
 
-###### Elemeto mapping (Radiobuttons)
+###### Elemeto mapping (Radiobuttons) {#elemeto-mapping-radiobuttons}
 
 **INPUTID: elementomappingB**
 
@@ -401,7 +401,7 @@ sidebarPanel(
 )
 ```
 
-###### Ancho de banda (SliderInput)
+###### Ancho de banda (SliderInput) {#ancho-de-banda-sliderinput}
 
 **INPUTID: binwidth**
 
@@ -451,7 +451,7 @@ sidebarPanel(
 )
 ```
 
-###### Posición (SelectInput)
+###### Posición (SelectInput) {#posición-selectinput}
 
 **INPUTID: densityposition**
 
@@ -542,9 +542,9 @@ mainPanel(
 
 [SelectizeInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput) que permite escoger una o multiples opciones que modifican la vista de la gráfica. Todas estas opciones son generales y comunes a todas las gráficas, excepto casos obvios donde no haya funcionalidad. Las diferentes variables entre las que escoger son:
 
--Simplificar eje x (id: simpx): esta opción modifica los niveles de la variable categorica que hay en el eje x y los sustituye por valores numericos desde el 1 hasta el número de niveles que haya. Esta opción se utiliza cuando las categorias son tan largas que no se leen en el gráfico. Su implementación en el server es aquí(#TODO)
+-Simplificar eje x (id: simpx): esta opción modifica los niveles de la variable categorica que hay en el eje x y los sustituye por valores numericos desde el 1 hasta el número de niveles que haya. Esta opción se utiliza cuando las categorias son tan largas que no se leen en el gráfico. Su implementación en el server es aquí([Output\$summaryx])
 
--Simplificar eje y (id: simpy): Similar a simpx, pero en el eje y. Su implementación en el server es aquí(#TODO)
+-Simplificar eje y (id: simpy): Similar a simpx, pero en el eje y. Su implementación en el server es aquí([Output\$summaryy])
 
 El código que forma este widget es el siguiente:
 
@@ -598,11 +598,11 @@ El código que forma este widget es el siguiente:
 
 ![](Input/Imagenes%20Documentacion/Widgets/save.png)
 
-###### Nombre del Archivo (TextInput)
+###### Nombre del Archivo (TextInput) {#nombre-del-archivo-textinput}
 
 **INPUTID: filename**
 
-[TextInput](https://shiny.posit.co/r/reference/shiny/latest/textinput) que permite al usuario determinar el nombre del archivo PNG en el que se guardará la foto de la gráfica, este TextInput tiene un valor inicial predeterminado que se va actualizando para evitar duplicados en el caso de que no se escoja un nombre manualmente. Este valor se actualiza en el server con la función [`updateTextInput()`](https://shiny.posit.co/r/reference/shiny/latest/updatetextinput) aquí ([Segundo observador (save)])
+[TextInput](https://shiny.posit.co/r/reference/shiny/latest/textinput) que permite al usuario determinar el nombre del archivo PNG en el que se guardará la foto de la gráfica, este TextInput tiene un valor inicial predeterminado que se va actualizando para evitar duplicados en el caso de que no se escoja un nombre manualmente. Este valor se actualiza en el server con la función [`updateTextInput()`](https://shiny.posit.co/r/reference/shiny/latest/updatetextinput) aquí ([Segundo observador (save)](#segundo-observador-save))
 
 El código que forma este widget es el siguiente:
 
@@ -628,7 +628,7 @@ El código que forma este widget es el siguiente:
 
 ##### Panel Resumen
 
-En este panel se renderizará el output que contiene el resumen de los datos, para ello se utiliza la función [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput) cuyo unico parámetro es el outputid del resumen(#TODO link al server).
+En este panel se renderizará el output que contiene el resumen de los datos, para ello se utiliza la función [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput) cuyo unico parámetro es el outputid del resumen([Output\$resumen]).
 
 El código del panel con el output es el siguiente:
 
@@ -650,7 +650,7 @@ mainPanel(
 
 ##### Panel data
 
-En este panel se renderizará el output que contiene la tabla con los datos que se representan, la tabla con los datos se genera en el server aquí(#TODO) y el output se genera aquí(#TODO link al server).
+En este panel se renderizará el output que contiene la tabla con los datos que se representan, la tabla con los datos se genera en el server aquí([Joindatos]) y el output se genera aquí([Output\$tablajoin]).
 
 La función para imprimir el output es [`tableOutput()`](https://shiny.posit.co/r/reference/shiny/latest/rendertable) cuyo unico parámetro es el outputid de la tabla.
 
@@ -677,7 +677,7 @@ mainPanel(
 
 ##### Panel levels
 
-En este panel se renderizará la relación entre los niveles de las variables que se representan y sus niveles una vez aplicada la simplificación utilizando las opciones de simpx y simpy ([Opciones de vista (SelectizeInput)](#opciones-de-vista-selectizeinput)). El texto con esta información se renderiza en el server aquí (#TODO).
+En este panel se renderizará la relación entre los niveles de las variables que se representan y sus niveles una vez aplicada la simplificación utilizando las opciones de simpx y simpy ([Opciones de vista (SelectizeInput)](#opciones-de-vista-selectizeinput)). El texto con esta información se renderiza en el server aquí ([Output\$summaryx] y [Output\$summaryy]).
 
 La función que imprime el output es [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput)
 
@@ -705,7 +705,7 @@ mainPanel(
 
 ##### Panel guardados
 
-En este panel se renderizarán las imágenes que el usuario elija, las imágenes se podrán escoger de las que haya en la carpeta `Output\OutputPlot`, un máximo de 4. Estas imágenes se representarán en el orden elegido. El output se genera en el server aquí (#TODO)
+En este panel se renderizarán las imágenes que el usuario elija, las imágenes se podrán escoger de las que haya en la carpeta `Output\OutputPlot`, un máximo de 4. Estas imágenes se representarán en el orden elegido. El output se genera en el server aquí ([Output\$imagenes])
 
 La función que imprime el output es [`imageOutput()`](https://shiny.posit.co/r/reference/shiny/latest/plotoutput)
 
@@ -732,13 +732,13 @@ tabPanel(title = "Guardados",
 
 ![](Input/Imagenes%20Documentacion/panelguardados.png)
 
-###### Imagenes a representar (SelectizeInput)
+###### Imagenes a representar (SelectizeInput) {#imagenes-a-representar-selectizeinput}
 
 **INPUTID: images**
 
 [SelectizeInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput) que permite escoger una o multiples opciones que representan las imágenes de la carpeta `Output\OutputPlot`, se podrán elegir hasta 4 imágenes que se imprimirán en orden.
 
-Las opciones entre las que elegir se irán actualizando cuando se guarde un archivo nuevo, ver la implementación en [Segundo observador (save)].
+Las opciones entre las que elegir se irán actualizando cuando se guarde un archivo nuevo, ver la implementación en [Segundo observador (save)](#segundo-observador-save).
 
 El código que forma este widget es el siguiente:
 
@@ -762,7 +762,7 @@ tabPanel(title = "Guardados",
 
 ##### Panel GetData
 
-En este panel se podrá extraer ciertos valores estadísticos como la media, min, max o mediana del dataset que el usuario eliga, para ello hay 4 widgets que permiten al usuario filtrar el tipo de información que quiere sacar. El output se genera en la parte del server aquí(#TODO)
+En este panel se podrá extraer ciertos valores estadísticos como la media, min, max o mediana del dataset que el usuario eliga, para ello hay 4 widgets que permiten al usuario filtrar el tipo de información que quiere sacar. El output se genera en la parte del server aquí([Output\$gotData])
 
 La función que imprime el output es [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput)
 
@@ -817,9 +817,9 @@ mainPanel(
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/wanteddata.png)
+![](Input/Imagenes%20Documentacion/Widgets/wanteddata.png)
 
-###### Dataset a hallar (SelectInput)
+###### Dataset a hallar (SelectInput) {#dataset-a-hallar-selectinput}
 
 **INPUTID: wanteddataset**
 
@@ -847,9 +847,9 @@ mainPanel(
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/wanteddataset.png)
+![](Input/Imagenes%20Documentacion/Widgets/wanteddataset.png)
 
-###### Sexo a hallar (SelectInput)
+###### Sexo a hallar (SelectInput) {#sexo-a-hallar-selectinput}
 
 **INPUTID: wantedsexo**
 
@@ -876,11 +876,11 @@ mainPanel(
 
 ![](Input/Imagenes%20Documentacion/Widgets/wantedsexo.png)
 
-###### Categoría a hallar (SelectInput)
+###### Categoría a hallar (SelectInput) {#categoría-a-hallar-selectinput}
 
 **INPUTID: wantedcategoric**
 
-[SelectInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput) que permite escoger la categoría de la que se quiere extraer la información, las opciones provienen de los niveles que haya en la columna que contenga la variable categórica del dataset, el valor empieza en N/A y se actualiza en el server utilizando la funcion [`updateselectinput()`](https://shiny.posit.co/r/reference/shiny/latest/updateselectinput) en el apartado de [Server] ([Tercer Observador (getData)]).
+[SelectInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput) que permite escoger la categoría de la que se quiere extraer la información, las opciones provienen de los niveles que haya en la columna que contenga la variable categórica del dataset, el valor empieza en N/A y se actualiza en el server utilizando la funcion [`updateselectinput()`](https://shiny.posit.co/r/reference/shiny/latest/updateselectinput) en el apartado de [Server] ([Tercer Observador (getData)](#tercer-observador-getdata)).
 
 El código que forma este widget es el siguiente:
 
@@ -1050,7 +1050,7 @@ El observador contiene las funciones [`ggsave()`](https://www.rdocumentation.org
 
 La primera tiene como objetivo guardar la imagen **(.png)** del último gráfico generado en la carpeta `Output\OutputPlot`, las dimensiones de la imagen son las más adecuada para gráficos de este estilo.
 
-Las dos funciones siguientes actualizan los valores de los widgets [Nombre del Archivo (TextInput)] y [Imagenes a representar (SelectizeInput)] respectivamente.
+Las dos funciones siguientes actualizan los valores de los widgets [Nombre del Archivo (TextInput)](#nombre-del-archivo-textinput) y [Imagenes a representar (SelectizeInput)](#imagenes-a-representar-selectizeinput) respectivamente.
 
 ```{r, eval = F}
 #SERVER------------------------------------
@@ -1067,9 +1067,9 @@ server <- function(input, output, session){
 }
 ```
 
-##### Tercer Observador (getData)
+##### Tercer Observador (getData) {#tercer-observador-getdata}
 
-Este tercer observador se encarga de manejar la implementación de las funciones del [Panel GetData] debido a que inicia y actualiza la variable de `wanteddataset`, cargando en ella el csv correspondiente al elegido en el widget [Dataset a hallar (SelectInput]) y posteriormente aplicándole la función `TratamientoDatosGeneral()`, además actualiza las opciones del widget [Categoría a hallar (SelectInput)] en función de los niveles de la variable categórica de `wanteddataset`.
+Este tercer observador se encarga de manejar la implementación de las funciones del [Panel GetData] debido a que inicia y actualiza la variable de `wanteddataset`, cargando en ella el csv correspondiente al elegido en el widget [Dataset a hallar (SelectInput]) y posteriormente aplicándole la función `TratamientoDatosGeneral()`, además actualiza las opciones del widget [Categoría a hallar (SelectInput)](#categoría-a-hallar-selectinput) en función de los niveles de la variable categórica de `wanteddataset`.
 
 ```{r, eval = F}
 #SERVER------------------------------------
@@ -1096,8 +1096,27 @@ Se procederá a listar y explicar todos los Outputs que se utilizan en la apliac
 
 Este output se trata de un plot o gráfico y utiliza la función [`renderPlot()`](https://shiny.posit.co/r/reference/shiny/latest/renderplot) que cualquier una expresión que genere un gráfico, para generar el gráfico se utiliza el paquete **ggplot2** en especifico la función [`ggplot(`](https://ggplot2.tidyverse.org/reference/ggplot.html)`)`. Se procederá a la explicación interna del código.
 
-```{r, eval = F}
+La primera parte de la expresión dentro del `renderPlot()` inicializa las variables internas necesarias para renderizar el plot, que son:
 
+-   joindatos: contiene los datasets (ver más en [Joindatos])
+
+-   tipográfico: tipo de gráfico a representar (ver más en [Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput))
+
+-   elemetomappingB: elemento a mapear en caso de tipográfico == "Boxplot (ver más en [Elemeto mapping (Radiobuttons)](#elemeto-mapping-radiobuttons))
+
+-   variablemapping: variable a mapear (ver más en [Variable para mapear (SelectInput)](#variable-para-mapear-selectinput))
+
+-   binwidth: ancho de banda del histograma (ver más en [Ancho de banda (SliderInput)](#ancho-de-banda-sliderinput))
+
+-   valorx: variable a representar en el eje x (ver más en [Eje x (SelectInput)](#eje-x-selectinput))
+
+-   valory: variable a representar en el eje y (ver más en [Eje y (SelectInput)](#eje-y-selectinput))
+
+-   sexo_representar: sexo que se quiere representar (ver más en [Sexo a Representar (SelectInput)](#sexo-a-representar-selectinput))
+
+Además de iniciar todas estas variables también se implementa la función de simplificación de los ejes, como fue explicado en [Opciones de vista (SelectizeInput)](#opciones-de-vista-selectizeinput), dependiendo de los valores de este input se simplifican los niveles de las columnas representadas como valor x y valor y, notese que este cambio en los niveles es interno a la función `renderplot()`, es decir, no se modifican los datos en ningún otro entorno reactivo.
+
+```{r, eval = F}
 #SERVER------------------------------------
 server <- function(input, output, session){
     #Genera el plot final
@@ -1117,6 +1136,27 @@ server <- function(input, output, session){
       if("simpy" %in% input$viewop){
         levels(joindatos[[valory]]) <- seq(1,length(joindatos[[valory]]))
       }
+      #
+      # RESTO DE LA EXPRESION
+      #
+    })
+}
+
+```
+
+La segunda parte de la expresión es la que forma la gráfica con la función `ggplot()`, primeramente se inicia el "esqueleto" de la gráfica, es decir, se indica el dataset donde extraer los datos y las columnas que van en el eje x y en el eje y, notese que para poder indicar a la funcion [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html) los valores de los ejes no se puede utilizar el operador \$ o indicar la variable literalmente (e.j `aes(x = valorx, y= valory)`), en su lugar se utiliza la expresión `aes(.data[[valorx]]...)`.
+
+También se añade a este esqueleto el label de los ejes, la función `theme()` que permite modificar el estilo, tamaño y color de distintas partes de la gráfica y el título de la gráfica formado por el nombre de los datasets a representar.
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
+    #Genera el plot final
+    output$plot <- renderPlot({
+      #
+      # INICIALIZACION DE VARIABLES
+      #
+      
       #Inicializa la gráfica con los datos elegidos e inserta los labels de los ejes
       p <- ggplot(data = joindatos, 
                   aes(x = .data[[valorx]] , y = .data[[valory]])) +
@@ -1136,35 +1176,135 @@ server <- function(input, output, session){
       } else{
         p <- p + ggtitle(paste(input$dataset1, input$dataset2, sep = "/"))
       }
-      #Si el tipo de gráfico elgido es un boxplot
+      #
+      # RESTO DE LA EXPRESION
+      #
+    })
+}
+
+```
+
+La tercera y última parte de la expresión filtra y devuelve el gráfico en función del tipo elegido([Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput)). Dependiendo del tipo lleva a cabo operaciones distintas:
+
+-   Boxplot: si el valor de elementomappingB ([Elemeto mapping (Radiobuttons)](#elemeto-mapping-radiobuttons)) es jitter añade a la gráfica el [Geom_Boxplot] y el [Geom_Jitter] mapeando el color dentro de `geom_jitter()` con la función [`aes(`](https://ggplot2.tidyverse.org/reference/aes.html)`)` . Por otro lado si elementomappingB es boxplot añade las mismas gráficas pero el mapeado esta dentro de `geom_boxplot()`. Por último, si el valor es N/A, no se mapea en ninguno de los dos gráficos.
+
+    ```{r, eval = F}
+
+    #SERVER------------------------------------
+    server <- function(input, output, session){
+        #Genera el plot final
+        output$plot <- renderPlot({
+          #
+          # EXPRESION ANTERIOR
+          #
+          #Si el tipo de gráfico elgido es un boxplot
+          if(tipografico == "Boxplot"){
+            if(elementomappingB == "Jitter"){             #Pinta el jitter
+              p + geom_boxplot(alpha = 0.8) + geom_jitter(aes(colour = .data[[variablemapping]]))
+            } else if(elementomappingB == "Box"){         #Pinta las boxes
+              p + geom_boxplot(aes(colour = .data[[variablemapping]]), alpha = 0.8)
+            } else{
+              p + geom_boxplot() + geom_jitter() #No pinta nada
+            }}
+          #
+          # RESTO DE LA EXPRESION
+          #
+          })
+    }
+    ```
+
+-   Histograma: los histogramas solo piden una variable en el eje x y da un error si existe un valor de eje y, por tanto, antes de hacer el histograma se vuelve a generar el plot solo con la variable del eje x, posteriormente se añade la función [Geom_histogram] con los valores reactivos de binwidth ([Ancho de banda (SliderInput)](#ancho-de-banda-sliderinput)) y la variable a mapear([Variable para mapear (SelectInput)](#variable-para-mapear-selectinput)).
+
+    Notese que los histogramas solo funcionan con valores numéricos, es decir, saltará un error si se intenta representar un valor categórico.
+
+    ```{r, eval = F}
+
+    #SERVER------------------------------------
+    server <- function(input, output, session){
+        #Genera el plot final
+        output$plot <- renderPlot({
+          #
+          # EXPRESION ANTERIOR
+          #
+          if(tipografico == "Boxplot"){
+            #EXPRESION DEL BOXPLOT
+          } else if(tipografico == "Histograma"){
+            p <- ggplot(data = joindatos, 
+                        aes(x = .data[[valorx]])) #Quita el valor y del gráfico para adaptarse a un histograma
+            #Pinta el histograma y rellena el fill con la categoria elegida
+            p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
+          }
+          #
+          # RESTO DE LA EXPRESION
+          #
+          })
+    }
+    ```
+
+Density: las density charts funcionan de manera similar a los histogramas en el aspecto de que solo admiten un valor a representar(eje x), por tanto, como hicimos con el histograma, se vuelve a generar el plot solo con la variable del eje x, posteriormente de añade la funcion [Geom_density] con los valores reactivos de posición([Posición (SelectInput)](#posición-selectinput)) y la variable a mapear([Variable para mapear (SelectInput)](#variable-para-mapear-selectinput)).
+
+```{r, eval = F}
+
+#SERVER------------------------------------
+server <- function(input, output, session){
+    #Genera el plot final
+    output$plot <- renderPlot({
+      #
+      # EXPRESION ANTERIOR
+      #
       if(tipografico == "Boxplot"){
-        if(elementomappingB == "Jitter"){             #Pinta el jitter
-          p + geom_boxplot(alpha = 0.8) + geom_jitter(aes(colour = .data[[variablemapping]]))
-        } else if(elementomappingB == "Box"){         #Pinta las boxes
-          p + geom_boxplot(aes(colour = .data[[variablemapping]]), alpha = 0.8)
-        } else{
-          p + geom_boxplot() + geom_jitter() #No pinta nada
-        }
-        #Si el tipo de gráfico es un histograma
+        #EXPRESION DEL BOXPLOT
       } else if(tipografico == "Histograma"){
-        p <- ggplot(data = joindatos, 
-                    aes(x = .data[[valorx]])) #Quita el valor y del gráfico para adaptarse a un histograma
-        #Pinta el histograma y rellena el fill con la categoria elegida
-        p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
-      } else if(tipografico == "Density"){
+        #EXPRESION DEL HISTOGRAMA
+      }  else if(tipografico == "Density"){
         p <- ggplot(data = joindatos, 
                     aes(x = .data[[valorx]]))
        p + geom_density(aes(fill = .data[[variablemapping]]), position = input$densityposition)
       }
-    })
+      })
+}
+```
+
+##### Output\$tablajoin
+
+Este sencillo output imprime la tabla de los datos que se van a representar, siendo estos datos [Joindatos], para ello utiliza la funcion [`renderTable()`](https://shiny.posit.co/r/reference/shiny/latest/rendertable) que acepta expresiones que generen una tabla, en este caso solo con insertar el dataset ya devuelve la tabla correspondiente.
+
+El código que forma el output es el siguiente:
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
     #Genera un output con los datos que se están representando en forma de tabla
    output$tablajoin <- renderTable({
     joindatos()
     })
+}
+```
+
+##### Output\$resumen
+
+Este output imprime el resumen de los datos a representar ([Joindatos]) con la función [`renderprint()`](https://shiny.posit.co/r/reference/shiny/latest/renderprint) y [`summary()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/summary).
+
+El código que forma el output es el siguiente:
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
+    #Genera un output con los datos que se están representando en forma de tabla
    #Genera un output con el resumen de los datos que se representan
    output$resumen <- renderPrint({
     summary(joindatos())
     }) 
+}
+```
+
+##### Output\$summaryx {data-link="Output$resumen"}
+
+Este output genera un print con la relación entre los niveles del valor x y la secuencia de números de la misma longitud, este print le da al usuario la capacidad de ver los nombres de los niveles cuando se utiliza la función de simplificar el eje x ([Opciones de vista (SelectizeInput)](#opciones-de-vista-selectizeinput))
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
    #Genera un output que muestra la relacion entre los números 
    #de simplificación en el eje x y sus valores en el dataset
    output$summaryx <- renderPrint({
@@ -1174,10 +1314,19 @@ server <- function(input, output, session){
        print(paste(x,r, sep = " ------> "))
        x <- x + 1
      }
-   }
+   })
+}
+```
+
+##### Output\$summaryy {data-link="Output$resumen"}
+
+Este output genera un print con la relación entre los niveles del valor y y la secuencia de números de la misma longitud, este print le da al usuario la capacidad de ver los nombres de los niveles cuando se utiliza la función de simplificar el eje y ([Opciones de vista (SelectizeInput)](#opciones-de-vista-selectizeinput))
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
    #Genera un output que muestra la relacion entre los números 
    #de simplificación en el eje y y sus valores en el dataset
-   )
    output$summaryy <- renderPrint({
      valory <- input$valuey
      x <- 1
@@ -1186,6 +1335,21 @@ server <- function(input, output, session){
        x <- x + 1
      }
    })
+}
+
+```
+
+##### Output\$imagenes {data-link="Output$resumen"}
+
+Estos outputs renderizan las imágenes escogidas por el usuario en [Imagenes a representar (SelectizeInput)](#imagenes-a-representar-selectizeinput) en el tab de Guardados([Panel guardados]). Para renderizsar estas imágenes se utiliza la función [`renderImage()`](https://shiny.posit.co/r/reference/shiny/latest/renderimage) que pide una expresión que genere una imagen, la expresión final debe contener una lista con el path a la imagen y ciertos parámetros que determinan su tamaño.
+
+En cada uno de los outputs (imagen1, imagen2, imagen3 e imagen4) se genera el path a la imagen correspondiente.
+
+El código de estos outputs es el siguiente:
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
    #Imagen 1
    output$imagen1 <- renderImage({
       path <- paste("Output\\OutputPlot\\", input$images[1], sep = "")
@@ -1214,7 +1378,8 @@ server <- function(input, output, session){
           alt = h3("Selecciona una imagen"))
    }, deleteFile = F)
    #Imagen 4
-   output$imagen4 <- renderImage({
+   output$
+     imagen4 <- renderImage({
      path <- paste("Output\\OutputPlot\\", input$images[4], sep = "")
      list(src = path,
           width = "1100",
@@ -1222,6 +1387,16 @@ server <- function(input, output, session){
           scale = 0.5,
           alt = h3("Selecciona una imagen"))
    }, deleteFile = F)
+}
+```
+
+##### Output\$gotData {data-link="Output$resumen"}
+
+Este output genera un print con los datos que el usuario desea hallar de los datasets utilzando la función [`renderprint()`](https://shiny.posit.co/r/reference/shiny/latest/renderprint). Para ello, primeramente se carga el dataset indicado en el widget [Dataset a hallar (SelectInput)](#dataset-a-hallar-selectinput), se le trata utilizando la función `TratamientoDatosGeneral()` y se filtra el sexo en función del valor de [Sexo a hallar (SelectInput)](#sexo-a-hallar-selectinput) y el level indicado en [Categoría a hallar (SelectInput)](#categoría-a-hallar-selectinput).
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
   #Output de datos
    output$gotdata <- renderPrint({
     dataset <- read.csv(paste("Input\\data\\", input$wanteddataset, sep = ""), sep = ";")
@@ -1232,6 +1407,23 @@ server <- function(input, output, session){
        dataset <- dataset[dataset[,1] == input$wantedsexo,]
     }
     dataset <- dataset[dataset[,3] == input$wantedcategoric,]
+    #
+    # RESTO DE LA EXPRESION
+    #
+   })
+}
+```
+
+Por último, en función del dato o datos que el usuario desea saber se imprime cada uno de ellos:
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
+  #Output de datos
+   output$gotdata <- renderPrint({
+    #
+    # COMIENZO DE LA EXPRESION
+    #
      if("media" %in% input$wanteddata){
        media <- sum(dataset[,4])/nrow(dataset)
        print(paste("MEDIA:", media, sep = " "))
@@ -1249,6 +1441,7 @@ server <- function(input, output, session){
        print(paste("MEDIANA:", median, sep = " "))
      }
   })
+}
    
 
 ```
@@ -1257,12 +1450,36 @@ server <- function(input, output, session){
 
 ### Mapping {data-link="Mapping"}
 
-#TODO
+El mapping o mapeado en este contexto se puede definir como el proceso de indicar visualmente la composición de un conjunto de datos en función de determinadas categorías asociadas con estos datos. Por ejemplo, podemos mapear las categorías de ejercicio físico en un histograma que representa la frecuencia de los valores numéricos del total. Como se puede observar aquí:
 
-### Geom_density
+![](Input/Imagenes Documentacion/ejemplomapping.png)
 
-### Geom_histogram
+### Geom_density {data-link="Mapping"}
 
-### Geom_Jitter {data-link="Geom_Jitter"}
+La función `geom_density()` es la proporcionada por **ggplot2** para representar los valores indicados en la función `ggplot()` como un gráfico de densidad, se añade al resultado de la función `ggplot()` con el operador `+` . `geom_density()` solo acepta una dimensión de representación, el eje x, y se puede cambiar la posición relativa de las areas de la gráfica en el parámetro position.
 
-### Geom_Boxplot {data-link="Geom_Boxplot"}
+Más detalles en la documentación de la función ([aquí](https://ggplot2.tidyverse.org/reference/geom_density.html)).
+
+![](Input/Imagenes Documentacion/ejemplo_geom_density.png)
+
+### Geom_histogram {data-link="Mapping"}
+
+La función `geom_histogram()` es la proporcionada por **ggplot2** para representar los valores indicados en la funcion `ggplot()` como un histograma. `geom_histogram()` solo acepta una dimensión de representación, el eje x, además este valor debe ser numérico ya que `geom_histogram()` no trabaja con valores categóricos, para ese proposito se utiliza `geom_bar()`.
+
+Para más información sobre la función ir [aquí](https://www.rdocumentation.org/packages/ggplot2/versions/0.9.1/topics/geom_histogram).
+
+![](Input/Imagenes Documentacion/ejemplo_geom_histogram.png)
+
+### Geom_Jitter {data-link="Mapping"}
+
+La función `geom_jitter()` es la proporcionada por **ggplot2** para representar los valores indicados en la funcion `ggplot()` como un conjunto de puntos. Esta función es un atajo a la expresión `geom_point(position = "jitter")`. La posición jitter añade una pequeña variación aleatoria a las posiciones de los puntos, es util para representar de otra manera la concentración de valores cuando se sobreescribe en otras visiones estadísticas como `geom_boxplot()`.
+
+Para más información sobre la función ir [aquí](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
+
+![](Input/Imagenes Documentacion/ejemplo_geom_jitter.png)
+
+### Geom_Boxplot {data-link="Mapping"}
+
+La función `geom_boxplot()` es la proporcionada por **ggplot2** para representar los valores indicados en la funcion `ggplot()` como un diagrama de caja. La caja represents
+
+Para más información sobre la función ir [aquí](https://ggplot2.tidyverse.org/reference/geom_jitter.html).

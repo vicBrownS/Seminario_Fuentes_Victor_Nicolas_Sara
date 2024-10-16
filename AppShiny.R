@@ -211,17 +211,7 @@ server <- function(input, output, session){
       }
       #Inicializa la gráfica con los datos elegidos e inserta los labels de los ejes
       p <- ggplot(data = joindatos, 
-                  aes(x = .data[[valorx]] , y = .data[[valory]])) +
-        xlab(valorx) + 
-        ylab(valory) +
-        #Cambia el color y tamaño de los ejes
-        theme(axis.title.x = element_text(colour = "Darkblue", size = 20),
-              axis.title.y = element_text(colour = "Darkblue", size = 20),
-              axis.text.x = element_text(size =15, colour = "black"),
-              axis.text.y = element_text(size = 15, colour = "black"),
-              
-              plot.title = element_text(size = 20, colour = "black", hjust = 0.5)
-              )
+                  aes(x = .data[[valorx]] , y = .data[[valory]])) 
       #Determina el título de la gráfica
       if(input$dataset1 == input$dataset2){
         p <- p + ggtitle(input$dataset1)
@@ -231,23 +221,34 @@ server <- function(input, output, session){
       #Si el tipo de gráfico elgido es un boxplot
       if(tipografico == "Boxplot"){
         if(elementomappingB == "Jitter"){             #Pinta el jitter
-          p + geom_boxplot(alpha = 0.8) + geom_jitter(aes(colour = .data[[variablemapping]]))
+          q <- p + geom_boxplot(alpha = 0.8) + geom_jitter(aes(colour = .data[[variablemapping]]))
         } else if(elementomappingB == "Box"){         #Pinta las boxes
-          p + geom_boxplot(aes(colour = .data[[variablemapping]]), alpha = 0.8)
+          q <- p + geom_boxplot(aes(colour = .data[[variablemapping]]), alpha = 0.8)
         } else{
-          p + geom_boxplot() + geom_jitter() #No pinta nada
+          q <- p + geom_boxplot() + geom_jitter() #No pinta nada
         }
         #Si el tipo de gráfico es un histograma
       } else if(tipografico == "Histograma"){
         p <- ggplot(data = joindatos, 
                     aes(x = .data[[valorx]])) #Quita el valor y del gráfico para adaptarse a un histograma
         #Pinta el histograma y rellena el fill con la categoria elegida
-        p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
+        q <- p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
       } else if(tipografico == "Density"){
         p <- ggplot(data = joindatos, 
                     aes(x = .data[[valorx]]))
-       p + geom_density(aes(fill = .data[[variablemapping]]), position = input$densityposition)
+       q <- p + geom_density(aes(fill = .data[[variablemapping]]), position = input$densityposition)
       }
+      q + 
+        xlab(valorx) + 
+        ylab(valory) +
+        #Cambia el color y tamaño de los ejes
+        theme(axis.title.x = element_text(colour = "Darkblue", size = 20),
+              axis.title.y = element_text(colour = "Darkblue", size = 20),
+              axis.text.x = element_text(size =15, colour = "black"),
+              axis.text.y = element_text(size = 15, colour = "black"),
+              
+              plot.title = element_text(size = 20, colour = "black", hjust = 0.5)
+        )
     })
     #Genera un output con los datos que se están representando en forma de tabla
    output$tablajoin <- renderTable({

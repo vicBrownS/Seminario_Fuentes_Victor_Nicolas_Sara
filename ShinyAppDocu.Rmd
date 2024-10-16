@@ -1146,8 +1146,6 @@ server <- function(input, output, session){
 
 La segunda parte de la expresión es la que forma la gráfica con la función `ggplot()`, primeramente se inicia el "esqueleto" de la gráfica, es decir, se indica el dataset donde extraer los datos y las columnas que van en el eje x y en el eje y, notese que para poder indicar a la funcion [`aes()`](https://ggplot2.tidyverse.org/reference/aes.html) los valores de los ejes no se puede utilizar el operador \$ o indicar la variable literalmente (e.j `aes(x = valorx, y= valory)`), en su lugar se utiliza la expresión `aes(.data[[valorx]]...)`.
 
-También se añade a este esqueleto el label de los ejes, la función `theme()` que permite modificar el estilo, tamaño y color de distintas partes de la gráfica y el título de la gráfica formado por el nombre de los datasets a representar.
-
 ```{r, eval = F}
 #SERVER------------------------------------
 server <- function(input, output, session){
@@ -1159,18 +1157,7 @@ server <- function(input, output, session){
       
       #Inicializa la gráfica con los datos elegidos e inserta los labels de los ejes
       p <- ggplot(data = joindatos, 
-                  aes(x = .data[[valorx]] , y = .data[[valory]])) +
-        xlab(valorx) + 
-        ylab(valory) +
-        #Cambia el color y tamaño de los ejes
-        theme(axis.title.x = element_text(colour = "Darkblue", size = 20),
-              axis.title.y = element_text(colour = "Darkblue", size = 20),
-              axis.text.x = element_text(size =15, colour = "black"),
-              axis.text.y = element_text(size = 15, colour = "black"),
-              
-              plot.title = element_text(size = 20, colour = "black", hjust = 0.5)
-              )
-      #Determina el título de la gráfica
+                  aes(x = .data[[valorx]] , y = .data[[valory]])) 
       if(input$dataset1 == input$dataset2){
         p <- p + ggtitle(input$dataset1)
       } else{
@@ -1184,7 +1171,7 @@ server <- function(input, output, session){
 
 ```
 
-La tercera y última parte de la expresión filtra y devuelve el gráfico en función del tipo elegido([Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput)). Dependiendo del tipo lleva a cabo operaciones distintas:
+La tercera parte de la expresión filtra y devuelve el gráfico en función del tipo elegido([Tipo de gráfico (SelectInput)](#tipo-de-gráfico-selectinput)). Dependiendo del tipo lleva a cabo operaciones distintas:
 
 -   Boxplot: si el valor de elementomappingB ([Elemeto mapping (Radiobuttons)](#elemeto-mapping-radiobuttons)) es jitter añade a la gráfica el [Geom_Boxplot] y el [Geom_Jitter] mapeando el color dentro de `geom_jitter()` con la función [`aes(`](https://ggplot2.tidyverse.org/reference/aes.html)`)` . Por otro lado si elementomappingB es boxplot añade las mismas gráficas pero el mapeado esta dentro de `geom_boxplot()`. Por último, si el valor es N/A, no se mapea en ninguno de los dos gráficos.
 
@@ -1200,11 +1187,11 @@ La tercera y última parte de la expresión filtra y devuelve el gráfico en fun
           #Si el tipo de gráfico elgido es un boxplot
           if(tipografico == "Boxplot"){
             if(elementomappingB == "Jitter"){             #Pinta el jitter
-              p + geom_boxplot(alpha = 0.8) + geom_jitter(aes(colour = .data[[variablemapping]]))
+              q <- p + geom_boxplot(alpha = 0.8) + geom_jitter(aes(colour = .data[[variablemapping]]))
             } else if(elementomappingB == "Box"){         #Pinta las boxes
-              p + geom_boxplot(aes(colour = .data[[variablemapping]]), alpha = 0.8)
+              q <- p + geom_boxplot(aes(colour = .data[[variablemapping]]), alpha = 0.8)
             } else{
-              p + geom_boxplot() + geom_jitter() #No pinta nada
+              q <- p + geom_boxplot() + geom_jitter() #No pinta nada
             }}
           #
           # RESTO DE LA EXPRESION
@@ -1232,7 +1219,7 @@ La tercera y última parte de la expresión filtra y devuelve el gráfico en fun
             p <- ggplot(data = joindatos, 
                         aes(x = .data[[valorx]])) #Quita el valor y del gráfico para adaptarse a un histograma
             #Pinta el histograma y rellena el fill con la categoria elegida
-            p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
+            q <- p + geom_histogram(binwidth = binwidth  ,color = "black", aes(fill = .data[[variablemapping]])) 
           }
           #
           # RESTO DE LA EXPRESION
@@ -1241,7 +1228,7 @@ La tercera y última parte de la expresión filtra y devuelve el gráfico en fun
     }
     ```
 
-Density: las density charts funcionan de manera similar a los histogramas en el aspecto de que solo admiten un valor a representar(eje x), por tanto, como hicimos con el histograma, se vuelve a generar el plot solo con la variable del eje x, posteriormente de añade la funcion [Geom_density] con los valores reactivos de posición([Posición (SelectInput)](#posición-selectinput)) y la variable a mapear([Variable para mapear (SelectInput)](#variable-para-mapear-selectinput)).
+-   Density: las density charts funcionan de manera similar a los histogramas en el aspecto de que solo admiten un valor a representar(eje x), por tanto, como hicimos con el histograma, se vuelve a generar el plot solo con la variable del eje x, posteriormente de añade la funcion [Geom_density] con los valores reactivos de posición([Posición (SelectInput)](#posición-selectinput)) y la variable a mapear([Variable para mapear (SelectInput)](#variable-para-mapear-selectinput)).
 
 ```{r, eval = F}
 
@@ -1259,9 +1246,34 @@ server <- function(input, output, session){
       }  else if(tipografico == "Density"){
         p <- ggplot(data = joindatos, 
                     aes(x = .data[[valorx]]))
-       p + geom_density(aes(fill = .data[[variablemapping]]), position = input$densityposition)
+       q <- p + geom_density(aes(fill = .data[[variablemapping]]), position = input$densityposition)
       }
       })
+}
+```
+
+Por último, también se añade a la gráfica el label de los ejes, la función `theme()` que permite modificar el estilo, tamaño y color de distintas partes de la gráfica y el título de la gráfica formado por el nombre de los datasets a representar.
+
+```{r, eval = F}
+#SERVER------------------------------------
+server <- function(input, output, session){
+    #Genera el plot final
+    output$plot <- renderPlot({
+      #
+      # EXPRESION ANTERIOR
+      #
+        q + 
+        xlab(valorx) + 
+        ylab(valory) +
+            #Cambia el color y tamaño de los ejes
+            theme(axis.title.x = element_text(colour = "Darkblue", size = 20),
+                  axis.title.y = element_text(colour = "Darkblue", size = 20),
+                  axis.text.x = element_text(size =15, colour = "black"),
+                  axis.text.y = element_text(size = 15, colour = "black"),
+                  
+                  plot.title = element_text(size = 20, colour = "black", hjust = 0.5)
+            )
+    })
 }
 ```
 
@@ -1480,6 +1492,20 @@ Para más información sobre la función ir [aquí](https://ggplot2.tidyverse.or
 
 ### Geom_Boxplot {data-link="Mapping"}
 
-La función `geom_boxplot()` es la proporcionada por **ggplot2** para representar los valores indicados en la funcion `ggplot()` como un diagrama de caja. La caja represents
+La función `geom_boxplot()` es la proporcionada por **ggplot2** para representar los valores indicados en la funcion `ggplot()` como un diagrama de caja. Las cajas representan una serie de datos numéricos a traves de su visualización en cuartiles (la caja está formada por el segundo y tercer cuartil), también se puede obsevar con claridad la mediana y los valores atípicos.
 
 Para más información sobre la función ir [aquí](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
+
+![](Input/Imagenes Documentacion/ejemplo_geom_boxplot.png)
+
+## Limites del visor
+
+Este visor de datos, pese a la gran funcionalidad que tiene, presenta varias limitaciones en función e implementación.
+
+Esto es debido a que, por ahora, su uso está restringido únicamente a este seminario gracias a que los datos a representar deben de tener una estructura determinada para que todo funciones de manera correcta.
+
+También cabe mencionar que el visor se limita a ser una herramienta util para la visualización y filtrado de los datasets que vamos a utlizar en el trabajo, pero por si solo no nos ayuda a sacar conclusiones respecto al tema que se trata en el seminario, siendo este la relación entre los determinantes de salud y el estado general de salud con contexto comparativo entre datos de varios años.
+
+Dicho esto, ha sido para mi un gran aprendizaje el programar y documentar el visor aquí presentado.
+
+Gracias por leer.

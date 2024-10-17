@@ -1464,7 +1464,7 @@ server <- function(input, output, session){
 
 El mapping o mapeado en este contexto se puede definir como el proceso de indicar visualmente la composición de un conjunto de datos en función de determinadas categorías asociadas con estos datos. Por ejemplo, podemos mapear las categorías de ejercicio físico en un histograma que representa la frecuencia de los valores numéricos del total. Como se puede observar aquí:
 
-![](Input/Imagenes Documentacion/ejemplomapping.png)
+![](Input/Imagenes%20Documentacion/ejemplomapping.png)
 
 ### Geom_density {data-link="Mapping"}
 
@@ -1472,7 +1472,7 @@ La función `geom_density()` es la proporcionada por **ggplot2** para representa
 
 Más detalles en la documentación de la función ([aquí](https://ggplot2.tidyverse.org/reference/geom_density.html)).
 
-![](Input/Imagenes Documentacion/ejemplo_geom_density.png)
+![](Input/Imagenes%20Documentacion/ejemplo_geom_density.png)
 
 ### Geom_histogram {data-link="Mapping"}
 
@@ -1480,7 +1480,7 @@ La función `geom_histogram()` es la proporcionada por **ggplot2** para represen
 
 Para más información sobre la función ir [aquí](https://www.rdocumentation.org/packages/ggplot2/versions/0.9.1/topics/geom_histogram).
 
-![](Input/Imagenes Documentacion/ejemplo_geom_histogram.png)
+![](Input/Imagenes%20Documentacion/ejemplo_geom_histogram.png)
 
 ### Geom_Jitter {data-link="Mapping"}
 
@@ -1488,7 +1488,7 @@ La función `geom_jitter()` es la proporcionada por **ggplot2** para representar
 
 Para más información sobre la función ir [aquí](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
 
-![](Input/Imagenes Documentacion/ejemplo_geom_jitter.png)
+![](Input/Imagenes%20Documentacion/ejemplo_geom_jitter.png)
 
 ### Geom_Boxplot {data-link="Mapping"}
 
@@ -1496,7 +1496,7 @@ La función `geom_boxplot()` es la proporcionada por **ggplot2** para representa
 
 Para más información sobre la función ir [aquí](https://ggplot2.tidyverse.org/reference/geom_jitter.html).
 
-![](Input/Imagenes Documentacion/ejemplo_geom_boxplot.png)
+![](Input/Imagenes%20Documentacion/ejemplo_geom_boxplot.png)
 
 ## Limites del visor
 

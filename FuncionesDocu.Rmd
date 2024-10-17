@@ -98,8 +98,8 @@ Se observará el efecto de la función en un ejemplo
 
 ### DATASET ORIGINAL
 
-![](Input/Imagenes Documentacion/dataset_sin_tratar.png)
+![](Input/Imagenes%20Documentacion/dataset_sin_tratar.png)
 
 ### DATASET TRATADO
 
-![](Input/Imagenes Documentacion/dataset_tratado.png)
+![](Input/Imagenes%20Documentacion/dataset_tratado.png)

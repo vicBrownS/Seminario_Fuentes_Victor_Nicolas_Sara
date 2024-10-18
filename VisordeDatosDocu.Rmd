@@ -762,7 +762,7 @@ tabPanel(title = "Guardados",
 
 ##### Panel GetData
 
-En este panel se podrá extraer ciertos valores estadísticos como la media, min, max o mediana del dataset que el usuario eliga, para ello hay 4 widgets que permiten al usuario filtrar el tipo de información que quiere sacar. El output se genera en la parte del server aquí([Output\$gotData])
+En este panel se podrá extraer ciertos valores estadísticos como la media, min, max, mediana o `summary()` del dataset que el usuario eliga, para ello hay 4 widgets que permiten al usuario filtrar el tipo de información que quiere sacar. El output se genera en la parte del server aquí([Output\$gotData])
 
 La función que imprime el output es [`verbatimTextOutput()`](https://shiny.posit.co/r/reference/shiny/latest/textoutput)
 
@@ -792,7 +792,7 @@ mainPanel(
 
 [SelectInput](https://shiny.posit.co/r/reference/shiny/latest/selectinput) que permite escoger los datos estadísticos que se quieren imprimir, las opciones las determina el vector que se observa en el código y cuyos valores son:
 
--   [Media](https://es.wikipedia.org/wiki/Media_aritm%C3%A9tica), min, max, [mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica))
+-   [Media](https://es.wikipedia.org/wiki/Media_aritm%C3%A9tica), min, max, [mediana](https://es.wikipedia.org/wiki/Mediana_(estad%C3%ADstica)), summary
 
 El código que forma este widget es el siguiente:
 
@@ -805,7 +805,7 @@ mainPanel(
             tabPanel("GetData",
                  column(4, 
                         selectizeInput("wanteddata", "Dato que quieres hallar",
-                  choices = c("media","min","max","mediana"), multiple = T))
+                  choices = c("media","min","max","mediana", "summary"), multiple = T))
                  
                  #OTRAS COLUMNAS
                  
@@ -1451,7 +1451,9 @@ server <- function(input, output, session){
      if("mediana" %in% input$wanteddata){
        median = median(dataset[,4])
        print(paste("MEDIANA:", median, sep = " "))
-     }
+     } if("summary" %in% input$wanteddata){
+      summary(dataset[,4])
+    }
   })
 }
    

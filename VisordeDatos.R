@@ -137,7 +137,7 @@ ui <- fluidPage(
         tabPanel("GetData",
                  column(4, 
                         selectizeInput("wanteddata", "Dato que quieres hallar",
-                                          choices = c("media","min","max","mediana"),
+                                          choices = c("media","min","max","mediana", "summary"),
                                           multiple = T)),
                  column(4, selectInput("wanteddataset", "Dataset del que sacar el dato",
                                        choices = datasets)),
@@ -333,6 +333,7 @@ server <- function(input, output, session){
    output$gotdata <- renderPrint({
     dataset <- read.csv(paste("Input\\data\\", input$wanteddataset, sep = ""), sep = ";")
     dataset <- TratamientoDatosGeneral(dataset)
+    dataset <- dataset[!is.na(dataset[,4]),]
     if(input$wantedsexo == "Hombres/Mujeres"){
        dataset <- dataset[dataset[,1] == "Hombres" | dataset[,1] == "Mujeres",]
     } else if(input$wantedsexo != "N/A"){
@@ -355,6 +356,9 @@ server <- function(input, output, session){
        median = median(dataset[,4])
        print(paste("MEDIANA:", median, sep = " "))
      }
+    if("summary" %in% input$wanteddata){
+      quantile(dataset[,4])
+    }
   })
    
 }

@@ -71,6 +71,8 @@ ui <- fluidPage(
                        ),
       #Escoge la variable con la que se quiere hacer el mapping
       selectInput("variablemapping","Variable con la que se quiere hacer mapping", 
+                  choices = "N/A"),
+      selectInput("level", "Selecciona el nivel a representar",
                   choices = "N/A")
       
     ),
@@ -191,6 +193,7 @@ server <- function(input, output, session){
       updateSelectInput(session = session, inputId = "valuex", choices = vectores_disponibles())
       updateSelectInput(session = session, inputId = "valuey", choices = vectores_disponibles())
       updateSelectInput(session = session, inputId = "variablemapping", choices = vectores_disponibles())
+      updateSelectInput(session = session, inputId = "level", choices = c("N/A",levels(joindatos()[,3])))
       })
     #Genera el plot final
     output$plot <- renderPlot({
@@ -201,8 +204,11 @@ server <- function(input, output, session){
       binwidth <- input$binwidth #Ancho de banda del histograma
       valorx <- input$valuex #Variable del eje x
       valory <- input$valuey #Variable del eje y
-      sexo_representar <- input$sexorepresentar #Sexo que se quiere representar
+      levelrepresentar <- input$level #Nivel a representar
       #Simplifica los levels del ejex o del ejey si asi se escoge
+      if(levelrepresentar != "N/A"){
+        joindatos <- joindatos[joindatos[,3] == levelrepresentar,]
+      }
       if("simpx" %in% input$viewop){
        levels(joindatos[[valorx]]) <- seq(1,length(joindatos[[valorx]]))
       } 

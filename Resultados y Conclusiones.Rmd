@@ -7,7 +7,6 @@ output:
     toc_float: true
     theme: united
     highlight: tango
-    css: "Input\\style.css" 
 date: "`r Sys.Date()`"
 ---
 
@@ -77,7 +76,7 @@ Los distintos datasets escogidos referentes al alcohol en los años 2009, 2014 y
 
 En la carpeta de `input\data` estos datasets son Alcohol_2009.csv , Alcohol_2014.csv y Alcohol_2020. csv. Estos se corresponden a los número 1, 2 y 3 de [Datos utilizados].
 
-#### Analisis en función del sexo 
+#### Analisis en función del sexo
 
 Primeramente se analizará la distribución del total en cada variable categórica en función del sexo, esto se observará en un diagrama de caja y se observara la evolución de estas variables en los tres años de la toma de datos.
 
@@ -117,13 +116,13 @@ Finalmente, en el año 2020 se puede ver un descenso en la media de hombres que 
 
 Hombres/sí ha consumido:
 
-![](Output/OuputDatos/hombres-si ha consumido_2020.png)
+![](Output/OuputDatos/hombres-si%20ha%20consumido_2020.png)
 
 Mujeres/si ha consumido:
 
-![](Output/OuputDatos/mujeres-si ha consumido_2020.png)
+![](Output/OuputDatos/mujeres-si%20ha%20consumido_2020.png)
 
-#### Analisis en función de las com. autonomas 
+#### Analisis en función de las com. autonomas
 
 También se analizará la evolución del consumo de alcohol y su variación en las distintas comunidades autónomas, nótese que los datos corresponden a los de la categoría "Ambos sexos" y atendiendo a la representación que se va a mostrar una caja más ancha representa un mayor consumo, debido a una diferencia mayor entre el dato "si ha consumido" y "no ha consumido".
 
@@ -152,6 +151,134 @@ Los distintos datasets escogidos referentes al consumo de tabaco en los años 20
 En la carpeta de `input\data` estos datasets son consumo_tabaco_2009.csv ,consumo_tabaco_204.csv y consumo_tabaco_2020.csv. Estos se corresponden a los número 4, 5 y 6 de [Datos utilizados].
 
 #### Analisis en función del sexo
+
+Primeramente se analizará la distribución del total en cada variable categórica en función del sexo, esto se observará en un diagrama de caja y se observara la evolución de estas variables en los tres años de la toma de datos
+
+Debido al gran número de categorías en cada uno de los datasets no se mostraran imágenes con los datos de todas ellas, si no las que tengan información importante para el análisis, para ver más datos revisarlos manualmente en el visor de datos.
+
+**2009:**
+
+![](Output/OutputPlot/Boxplot_consumo_tabaco_Sexo_2009.png)
+
+En 2009 se observa como aunque el número de personas que admite no haber fumado nunca es mayor a aquellos que son fumadores diario todavía estos comportan un gran porcentaje del total, mucho mayor en caso de hombres, concrétamente un 31% de media en comparación con un 21% en caso de las mujeres que fuman todos los días. Es fácil notar como hay un mayor porcentaje de hombres que consumen tabaco y que son ex-fumadores respecto a las mujeres, que tienen un mayor porcentaje en la categoría **no ha fumado nunca**. La dispersión de los valores es pequeña, reflejando unicidad de los valores entre comunidades autónomas. Los valores estadísticos apoyan estas observaciones:
+
+Hombres/fumador diario:
+
+![](Output/OuputDatos/hombres-fumador_diario_2009.png)
+
+Mujeres/fumador diario:
+
+![](Output/OuputDatos/mujeres-fumador_diario_2009.png)
+
+Hombres/no ha fumado nunca:
+
+![](Output/OuputDatos/hombres-no_ha_fumado_nunca_2009.png)
+
+Mujeres/no ha fumado nunca:
+
+![](Output/OuputDatos/mujeres-no_ha_fumado_nunca_2009.png)
+
+**2014:**
+
+![](Output/OutputPlot/Boxplot_consumo_tabaco_Sexo_2014.png)
+
+En 2014 se puede ver una reducción significativa en la cantidad de fumadores diarios en ambos sexos, sobre todo en el caso de los hombres, pasando de un 31 % de media en 2009 a un 26 % en 2014, en caso de las mujeres la reducción es menor de 21% a 17%. Este descenso en fumadores diarios se refleja en un aumento en el número de ex-fumadores, de un 25% de media en 2009 a un 31 en 2014 en hombres y de un 14 % a un 18 % en mujeres. Notese que el descenso en fumadores diarios ha afectado al número de ex-fumadores, como es lógico, mientras que la categoría de **no ha fumado nunca** mantiene unos valores parecidos, veremos como esto cambia en el próximo año. Los valores estadísticos apoyan estas observaciones:
+
+Hombres/fumador diario:
+
+![](Output/OuputDatos/hombre-fumador_diario_2014.png)
+
+Mujeres/fumador diario:
+
+![](Output/OuputDatos/mujeres-fumador_diario_2014.png)
+
+Mujeres/ex-fumador:
+
+![](Output/OuputDatos/mujeres-ex_fumador_2014.png)
+
+Hombres/ex-fumador:
+
+![](Output/OuputDatos/hombres-ex_fumador_2014.png)
+
+**2020:**
+
+![](Output/OutputPlot/Boxplot_consumo_tabaco_Sexo_2020.png)
+
+En 2020 se puede ver un cambio significativo en la distribución de las variables reflejado en el aumento de personas que admiten no haber fumado nunca y la reducción en fumadores diarios y ex-fumadores. Concrétamente en el caso de los hombres la categoría **no ha fumado nunca** aumenta de un 39 % en años anteriores a un 47 % en 2020. En mujeres aumenta de un 61% a un 65%. En materia de fumadores diarios también se aprecia una reducción de 3 puntos para hombres y 1 punto para mujeres.
+
+Como tendencia general se puede concluir que el consumo de tabaco desciende significativamente desde el año 2009, lo que presuntamente debería aumentar el estado general de salud en todo el país.
+
+Los datos estadísticos son los siguientes
+
+Hombres/fumador diario:
+
+![](Output/OuputDatos/hombres-fumador_diario_2020.png)
+
+Mujeres/fumador diario:
+
+![](Output/OuputDatos/mujeres-fumador_diario_2020.png)
+
+Hombres/nunca ha fumado:
+
+![](Output/OuputDatos/hombres-nunca_ha_fumado_2020.png)
+
+Mujeres/nunca ha fumado:
+
+![](Output/OuputDatos/mujeres-nunca_ha_fumado_2020.png)
+
+#### Analisis en función de las com. autonomas
+
+También se analizará la evolución del consumo de tabaco en las distintas comunidades autónomas, para ello se visualizará un histograma con los datos de cada categoría (**Fumador diario, fumador ocasional, ex-fumador, nunca ha fumado**) en los distintos años de toma de datos, en estos histogramas se podrá ver a través del mapping las comunidades autónomas.
+
+Los datos son filtrados en función de la variable "Ambos Sexos", por lo que solo existe una instancia de cada dato para cada comunidad autónoma.
+
+**Fumador diario:**
+
+**2009:**
+
+![](Output/OutputPlot/Histograma_fumador_diario_2009.png)
+
+**2014:**
+
+![](Output/OutputPlot/Histograma_fumador_diario_2014.png)
+
+**2020:**
+
+![](Output/OutputPlot/Histograma_fumador_diario_2020.png)
+
+En la categoría de **fumador diario** se observa como la reducción de la proporción de estas respuestas disminuye en todas las comunidades autónomas, sin embargo, se puede observar como en la ciudad autónoma de Melilla no se reduce tanto debido a que este dato ya estaba en torno al 15%-18% en 2009. Notese como la distribución se va normalizando con el paso del tiempo, siendo los datos más alejados de la media los de Melilla, Navarra (por debajo), Galicia y Murcia (por encima).
+
+Es interesante también la evolución de Castilla-la-Macha, que pasa de estar por encima de la media en 2009 (**28,95 %**) a estar ligeramente debajo en 2020 (**20,06 %**)
+
+**Ex-fumador:**
+
+**2009:**
+
+![](Output/OutputPlot/Histograma_ex_fumador_2009.png)
+
+**2014:**
+
+![](Output/OutputPlot/Histograma_fumador_diario_2014.png)
+
+**2020:**
+
+![](Output/OutputPlot/Histograma_ex_fumador_2020.png)
+
+En la categoría de **ex-fumador** se observa lo resaltado en el anterior análisis, el número de ex-fumadores aumenta de manera general entre 2009 y 2014, sin embargo en 2020 no se observa un aumento similar, de hecho se puede observar un incremento en la dispersión de los datos. Desde el punto de vista de las comunidades autónomas cabe destacar el caso de Melilla que pasa de tener un porcentaje de ex-fumadores del 19 % en 2009 a un 14% en 2014 a un 6% en 2020. Las demás comunidades autónomas evolucionan de manera similiar entre ellas guardando una distribución parecida a la normal.
+
+**No ha fumado nunca:**
+
+**2009:**
+
+![](Output/OutputPlot/Histograma_nunca_ha_fumado_2009.png)
+
+**2014:**
+
+![](Output/OutputPlot/Histograma_nunca_ha_fumado_2014.png)
+
+**2020:**
+
+![](Output/OutputPlot/Histograma_nunca_ha_fumado_2020.png)
 
 ## Análisis comparativo
 

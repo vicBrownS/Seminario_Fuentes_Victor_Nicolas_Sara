@@ -1,0 +1,158 @@
+---
+title: "Resultados y Conclusiones"
+output: 
+  html_document: 
+    toc: true
+    toc_depth: 6
+    toc_float: true
+    theme: united
+    highlight: tango
+    css: "Input\\style.css" 
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducción
+
+Como se indica en el archivo README el objetivo de este trabajo es el análisis de la evolución y correlación entre ciertos determinantes de salud y el estado general de salud de la población española.
+
+Los datos utilizados provienen de la encuesta europea de salud que el INE ha realizado en los años 2009, 2014 y 2020. Para acceder a los datos se utiliza el portal web del INE ([AQUI](https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736176784&menu=resultados&idp=1254735573175)).
+
+## Criterios y consideraciones sobre los datos
+
+Los criterios utilizados para fitrar la enorme cantidad de datos proveniente de esta encuesta son los siguientes:
+
+-   Los datos a tratar han de tener su resultado en cifras relativas, es decir, tienen que estar expresados en porcentajes.
+
+-   Los datos a tratar han de estar agrupados en función del sexo y de la comunidad autónoma.
+
+-   Los datos a tratar tienen que posibilitar un seguimiento de su evolución, es decir, tiene que aparecer una encuesta con las mismas categorías a través de los tres años que se estudian (2009, 2014, 2020).
+
+Estos criterios permiten una unicidad en los datos que facilita su tratamiento y correlación.
+
+Importante denotar las siguientes apreciaciones sobre los datasets utilizados:
+
+-   Todos los datos trabajan sobre una muestra poblacional de 35.000 personas de distintas comunidades autónomas.
+
+-   Todos los datos están sujetos a errores de muestreo y poseen sus coeficientes de variación correspondientes, por simplificar y facilitar la realización de este trabajo no se toman en cuenta estos coeficientes para el análisis estadístico. Se recomienda discreción en la consideración de la veracidad de los datos y resultados.
+
+## Datos utilizados
+
+Todos los datasets utilizados en este análisis son los siguientes:
+
+1.  [Consumo de bebidas alcohólicas en los últimos 12 meses según sexo y comunidad autónoma. Población de 15 y más años. (2009)](https://www.ine.es/jaxi/Tabla.htm?path=/t15/p420/a2014/p06/l0/&file=03004.px&L=0)
+
+2.  [Consumo de bebidas alcohólicas en los últimos 12 meses según sexo y comunidad autónoma. Población de 15 y más años.](https://www.ine.es/jaxi/Tabla.htm?path=/t15/p420/a2014/p06/l0/&file=03004.px&L=0) (2014)
+
+3.  [Consumo de bebidas alcohólicas en los últimos 12 meses según sexo y comunidad autónoma. Población de 15 y más años. (2020)](Consumo%20de%20bebidas%20alcohólicas%20en%20los%20últimos%2012%20meses%20según%20sexo%20y%20comunidad%20autónoma.%20Población%20de%2015%20y%20más%20años.)
+
+4.  [Consumo de tabaco según sexo y comunidad autónoma. Población de 16 y más años (2009)](https://www.ine.es/jaxi/Tabla.htm?path=/t15/p420/a2009/p06/l0/&file=04003.px&L=0)
+
+5.  [Consumo de tabaco según sexo y comunidad autónoma. Población de 15 y más años. (2014)](https://www.ine.es/jaxi/Tabla.htm?path=/t15/p420/a2014/p06/l0/&file=02004.px&L=0)
+
+6.  [Consumo de tabaco según sexo y comunidad autónoma. Población de 15 y más años. (2020)](https://www.ine.es/jaxi/Tabla.htm?path=/t15/p420/a2019/p06/l0/&file=02004.px&L=0)
+
+## Metodología general-Visor de datos
+
+Para toda la obtención de los resultados de este seminario se utiliza la herramienta desarrollada en este mismo seminario, el visor de datos.
+
+Toda la información sobre el funcionamiento y objetivo del visor se puede ver en su documentación (**VisordeDatosDocu.html)**
+
+La aplicación está disponible en este mismo GitHub y se deja la libertad al lector de trabajar con los datos y comprobar manualmente los resultados que se van a mostrar.
+
+## Análisis evolutivo
+
+Primeramente se realizara un análisis de la evolución de los datos tanto de los determinantes de salud, como de aquellos sobre el estado de salud. El objetivo de este análisis evolutivo es crear una base de información relevante para el análisis comparativo que se realizará posteriormente.
+
+### Metodología del análisis evolutivo
+
+Para realizar con rigurosidad y uniformidad un análisis de la evolución de los distintos datos se seguirá una misma metodología para cada uno de ellos. Para ello, se utilizará las funcionalidades que el visor de datos provee y se realizarán varios análisis de la evolución utilzando boxplots, histogramas y gráficos de densisdad. En cada dataset se utilizarán diferentes recursos y se hará una interpretación de cada resultado, indicando también los valores estadísticos exactos.
+
+### Dataset: Alcohol
+
+Los distintos datasets escogidos referentes al alcohol en los años 2009, 2014 y 2020 hacen el estudio sobre el consumo de bebidas alcohólicas en los últimos 12 meses, siendo las posibles respuestas: **sí ha consumido** y **no ha consumido**.
+
+En la carpeta de `input\data` estos datasets son Alcohol_2009.csv , Alcohol_2014.csv y Alcohol_2020. csv. Estos se corresponden a los número 1, 2 y 3 de [Datos utilizados].
+
+#### Analisis en función del sexo 
+
+Primeramente se analizará la distribución del total en cada variable categórica en función del sexo, esto se observará en un diagrama de caja y se observara la evolución de estas variables en los tres años de la toma de datos.
+
+**2009:**
+
+![](Output/OutputPlot/Boxplot_Consumo_Alcohol_Sexo_2009.png)
+
+En esta representación se observa como el consumo de alcohol varía significativamente en función del sexo en el año 2009, siendo los hombres los que admiten haber consumido alcohol en los últimos 12 meses en mayor medida. Los datos reflejan una diferencia de media de 24 puntos entre ambos sexos, lo cual es bastante relevante. En caso de los hombres la dispersión de los valores entre cuartiles es de 7 puntos entre el 1º y 3º cuartil, se observa una dispersión ligeramente mayor en caso de las mujeres, en torno a los 11 puntos. Los valores estadísticos apoyan estas observaciones:
+
+Hombres/sí ha consumido:
+
+![](Output/OuputDatos/hombres-si%20ha%20consumido_2009.png)
+
+Mujeres/si ha consumido:
+
+![](Output/OuputDatos/mujeres-sí%20ha%20consumido_2009.png)
+
+**2014:**
+
+![](Output/OutputPlot/Boxplot_Consumo_Alcohol_Sexo_2014.png)
+
+En el año 2014 se observa un cambio en la distribución de los datos, apuntando hacia un relevante aumento en el consumo de alcohol en caso de las mujeres, subiendo la media en 6 puntos en comparación con los dato de 2009, y un lígero aumento en el caso de los hombres, 1 punto de subida en su caso. En cuanto a la dispersión también se puede notar un cambio, en el caso de las mujeres la dispersión entre el 1º y 3º cuartil es de 13 puntos (11 puntos en 2009) y el de los hombres se mantiene en 7 puntos. Los valores estadísticos apoyan estas observaciones:
+
+Hombres/sí ha consumido:
+
+![](Output/OuputDatos/hombres-sí%20ha%20consumido_2014.png){width="337"}
+
+Mujeres/si ha consumido:
+
+![](Output/OuputDatos/mujeres-sí%20ha%20consumido_2014.png)
+
+**2020:**
+
+![](Output/OutputPlot/Boxplot_Consumo_Alcohol_Sexo_2020.png)
+
+Finalmente, en el año 2020 se puede ver un descenso en la media de hombres que admiten haber bebido en los últimos 12 meses, cocretamente una bajada de 2 puntos, en el caso de las mujeres la media se mantiene en el 55%. El mayor cambio en este año respecto a los anteriores se observa en la dispersión de los datos en el caso de las mujeres con una diferencia entre el 1º y 3º cuartil de **17 puntos** (siendo 11 y 13 en años anteriores). Los valores estadísticos apoyan estas observaciones:
+
+Hombres/sí ha consumido:
+
+![](Output/OuputDatos/hombres-si ha consumido_2020.png)
+
+Mujeres/si ha consumido:
+
+![](Output/OuputDatos/mujeres-si ha consumido_2020.png)
+
+#### Analisis en función de las com. autonomas 
+
+También se analizará la evolución del consumo de alcohol y su variación en las distintas comunidades autónomas, nótese que los datos corresponden a los de la categoría "Ambos sexos" y atendiendo a la representación que se va a mostrar una caja más ancha representa un mayor consumo, debido a una diferencia mayor entre el dato "si ha consumido" y "no ha consumido".
+
+Luego de mostrar los gráficos de los 3 años se procederá a su explicación e interpretación.
+
+**2009:**
+
+![](Output/OutputPlot/Boxplot_Consumo_Alcohol_CA_2009.png)
+
+**2014:**
+
+![](Output/OutputPlot/Boxplot_Consumo_Alcohol_CA_2014.png)
+
+**2020:**
+
+![](Output/OutputPlot/Boxplot_Consumo_Alcohol_CA_2020.png)
+
+La interpretación de estos diagramas de cajas es ligeramente distinto respecto a los mostrados en el anterior análisis, en este caso, al solo existir solo dos datos, "si ha consumido" y "no ha consumido", por comunidad autónoma la dispersión de la caja representa la diferencia entre estos valores, es decir, a mayor dispersión mayor consumo de alcohol. El valor real del consumo se encontraría en el extremo de cada boxplot, al final de la linea de color.
+
+Observando las gráficas y los datos se puede ver como, pese a que el consumo de alcohol a aumentado de manera general entre 2009 a 2020, en específico de un 61% de media en las respuestas de "si ha consumido" en 2009 a un 64 % en 2020, hay mucha variación en la evolución de este mismo dato en diferentes comunidades autónomas, por ejemplo en Cantabria se ve un gran aumento del consumo frente a una gran reducción del mismo en Andalucía entre 2009 y 2020.
+
+### Dataset: Consumo de tabaco
+
+Los distintos datasets escogidos referentes al consumo de tabaco en los años 2009, 2014 y 2020 hacen el estudio sobre los hábitos respecto al consumo, creando 4 categorias distintas: **Fumador diario, fumador ocasional, ex-fumador y nunca ha fumado**
+
+En la carpeta de `input\data` estos datasets son consumo_tabaco_2009.csv ,consumo_tabaco_204.csv y consumo_tabaco_2020.csv. Estos se corresponden a los número 4, 5 y 6 de [Datos utilizados].
+
+#### Analisis en función del sexo
+
+## Análisis comparativo
+
+### Metodología del análisis comparativo

@@ -9,6 +9,7 @@ output:
     highlight: tango
     css: "Input\\style.css"  
 date: "`r Sys.Date()`"
+author: "Victor Brown Sogorb, Nicolas Garcia Gomez, Sara Meda López"
 ---
 
 ```{r setup, include=FALSE}

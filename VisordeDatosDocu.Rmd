@@ -504,7 +504,7 @@ sidebarPanel(
 
 ![](Input/Imagenes%20Documentacion/Widgets/variablemapping.png)
 
-##### Nivel a representar (SelectInput)
+##### Nivel a representar (SelectInput) {#nivel-a-representar-selectinput}
 
 **INPUTID: level**
 
@@ -532,7 +532,7 @@ sidebarPanel(
 
 ```
 
-![](Input/Imagenes Documentacion/Widgets/level.png)
+![](Input/Imagenes%20Documentacion/Widgets/level.png)
 
 #### Mainpanel
 
@@ -1143,7 +1143,7 @@ La primera parte de la expresión dentro del `renderPlot()` inicializa las varia
 
 -   valory: variable a representar en el eje y (ver más en [Eje y (SelectInput)](#eje-y-selectinput))
 
--   levelrepresentar: nivel que se quiere representar (ver más en [Nivel a representar (SelectInput)])
+-   levelrepresentar: nivel que se quiere representar (ver más en [Nivel a representar (SelectInput)](#nivel-a-representar-selectinput))
 
 Además de iniciar todas estas variables también se implementa la función de simplificación de los ejes, como fue explicado en [Opciones de vista (SelectizeInput)](#opciones-de-vista-selectizeinput), dependiendo de los valores de este input se simplifican los niveles de las columnas representadas como valor x y valor y, notese que este cambio en los niveles es interno a la función `renderplot()`, es decir, no se modifican los datos en ningún otro entorno reactivo.
 

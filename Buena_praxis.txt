@@ -1,4 +1,4 @@
-Reglas para la ejecucion de un codigo depurado:
+Reglas para la ejecucion de un código depurado:
 
 1 - Seguir el estilo de programacion marcado por Tydiverse.
 2 - Citar todo el codigo que se emplee en el R markdown empleando la funcion citation().

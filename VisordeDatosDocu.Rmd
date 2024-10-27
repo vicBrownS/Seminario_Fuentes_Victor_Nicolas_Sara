@@ -935,10 +935,6 @@ mainPanel(
 
 ![](Input/Imagenes%20Documentacion/Widgets/wantedcategoric.png)
 
-#### Vista general
-
-#TODO PONER UN GIF
-
 ### Server {data-link="Server"}
 
 La función de [Server (Concepto)](#server-concepto) es la que realiza todos los calculos de la aplicación y, por tanto, es la encargada de generar todos los outputs que se imprimen en el [MainPanel], en este apartado analizaremos con rigurosidad cada output generado y todas las variables que entran en su creación.

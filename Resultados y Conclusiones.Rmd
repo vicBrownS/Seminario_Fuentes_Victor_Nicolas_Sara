@@ -498,9 +498,6 @@ Los cambios en estos datasets nos indican una tendencia positiva hacia la dismin
 
 El estado de salud percibido en el país evoluciona positivamente pero este aumento no es demasiado significativo, pese a ello un incremento sigue siendo buenas noticias y se puede relacionar con los determinantes estudiados.
 
-<<<<<<< HEAD
-##### Conclusiones
-=======
 **Conclusiones del análisis:**
 >>>>>>> 4b0d87a37f0e068289ebbe26e482deab9a0fc62e
 
@@ -555,8 +552,5 @@ Para hacer el análisis en este aspecto se analizarán los datos de todas las co
 
 **Melilla:** En Melilla las cifras se mantienen constantes durante este periodo de tiempo, con un 19% en la catgoría **Muy bueno,** y un 60%, 16%, 4% en las siguientes respectivamente. Esta invariabilidad se mantiene pese a una reducción del 13 % en el consumo de alcohol y una reducción del 3 % en el consumo de tabaco.
 
-##### Conclusiones
-
 En cuanto al análisis de las comunidades autónomas podemos concluir que existe una correlación entre el estado de salud y el consumo de tabaco y alcohol, sin embargo, el estado de salud es una variable multifactorial que depende de muchas más cosas que estos determinantes estudiados, por lo tanto, dentro del estudio de cada comunidad autónoma se pueden encontrar excepciones o datos que no apoyen completamente este análisis. Pese a todo, el objetivo de este estudio y, en conclusión, de este trabajo no deja de ser el de manejar y tratar distintos datasets por lo que tomese los resultados de este trabajo "con un grano de sal".
-=======
 >>>>>>> 4b0d87a37f0e068289ebbe26e482deab9a0fc62e

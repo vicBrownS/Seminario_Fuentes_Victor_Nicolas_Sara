@@ -510,7 +510,6 @@ En el caso de las mujeres el estado de salud mejora en menor medida en contrapos
 Cabe destacar que pese a que las cifras de consumo de tabaco y consumo de alcohol por parte de las mujeres son más bajas, estas también perciben su estado de salud de manera más negativa que los hombres, que tienen cifras peores en los determinantes comentados. Esta discrepancia puede ser debida a la multifactorialidad del llamado "Estado de salud" y también a las diferencias sociopsicológicas que existen entre hombres y mujeres.
 
 #### Análisis en función de las com. autónomas
-<<<<<<< HEAD
 
 Para hacer el análisis en este aspecto se analizarán los datos de todas las comunidades autónomas por separado y se extrairan conclusiones de cada una de ellas:
 

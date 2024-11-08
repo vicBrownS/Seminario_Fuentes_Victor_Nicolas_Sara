@@ -5,7 +5,7 @@
 ########
 library(shiny)
 library(ggplot2)
-source("Input\\Funciones.R")
+source("Funciones.R")
 datasets <- list.files("Input\\data")
 claseplot <- c("Boxplot", "Histograma", "Density")
 ###########

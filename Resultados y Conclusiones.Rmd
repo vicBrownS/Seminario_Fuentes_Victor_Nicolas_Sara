@@ -1,5 +1,5 @@
 ---
-title: "Resultados y Conclusiones"
+title: "Analisis evolutivo y correlativo del consumo de alcohol, tabaco y estado de salud"
 output: 
   html_document: 
     toc: true
@@ -8,6 +8,7 @@ output:
     theme: united
     highlight: tango
 date: "`r Sys.Date()`"
+author: "Victor Brown Sogorb, Nicolas Garcia Gomez, Sara Meda Lopez"
 ---
 
 ```{r setup, include=FALSE}
@@ -21,6 +22,8 @@ ESTE ARCHIVO Y TODO EL TRABAJO SE ENCUENTRA EN EL GITHUB([AQUI](https://github.c
 Como se indica en el archivo README el objetivo de este trabajo es el análisis de la evolución y correlación entre ciertos determinantes de salud y el estado general de salud de la población española.
 
 Los datos utilizados provienen de la encuesta europea de salud que el INE ha realizado en los años 2009, 2014 y 2020. Para acceder a los datos se utiliza el portal web del INE ([AQUI](https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736176784&menu=resultados&idp=1254735573175)).
+
+#TODO PONER REFERENCIAS
 
 ## Criterios y consideraciones sobre los datos
 

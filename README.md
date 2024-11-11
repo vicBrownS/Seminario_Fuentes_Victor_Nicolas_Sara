@@ -13,7 +13,7 @@ Relación entre calidad de vida, hábitos y zonas verdes
 Este seminario aborda la interconexión entre el bienestar urbano y la disponibilidad de espacios naturales. Partiendo de un enfoque holístico, se examinará cómo las zonas verdes influyen en la salud física, mental y social de las personas, así como en la promoción de estilos de vida saludables. Además, se explorarán investigaciones recientes que destacan la importancia de estos espacios para reducir el estrés, mejorar la cohesión social y fomentar una vida más activa. Finalmente, se debatirán propuestas innovadoras para integrar de manera efectiva más áreas verdes en las ciudades contemporáneas.
 
 ## Objetivo general 
-Estudiar la relación entre calidad de vida, hábitos y zonas verdes con el fin de obtener estadísticas y gráficos que muestren la evolución de estas variables según la provincia en España. 
+Estudiar la relación entre calidad de vida, hábitos y zonas verdes con el fin de obtener estadísticas y gráficos que muestren la evolución de estas variables según la provincia en España.
 
 ## Objetivos específicos
 1. Explorar el impacto de las zonas verdes en la mejora de la calidad de vida, tanto a nivel físico como emocional.

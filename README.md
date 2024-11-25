@@ -1,38 +1,61 @@
-# Calidad de vida, hábitos y zonas verdes
- Repositorio creado y desarrollado por alumnos del grupo 101 de la asignatura "Fuentes de Datos Biomédicas y Web Semántica" del grado en Ingeniería de la Salud en la Universidad de Burgos.
- 
-![image](https://github.com/user-attachments/assets/19dbca6a-443f-46e3-b8a5-f761bd316bc6)
+# Análisis Evolutivo y Correlativo del Consumo de Alcohol, Tabaco y Estado de Salud
 
- ## Integrantes del grupo
- Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López
- 
-## Título del proyecto
-Relación entre calidad de vida, hábitos y zonas verdes
+Este proyecto presenta un análisis detallado sobre las tendencias de consumo de alcohol y tabaco, y su correlación con indicadores de salud pública en diversas poblaciones. Este estudio, llevado a cabo por Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López, tiene como objetivo identificar patrones y proporcionar una base científica para recomendaciones en políticas de salud pública.
 
-## Introducción
-Este seminario aborda la interconexión entre el bienestar urbano y la disponibilidad de espacios naturales. Partiendo de un enfoque holístico, se examinará cómo las zonas verdes influyen en la salud física, mental y social de las personas, así como en la promoción de estilos de vida saludables. Además, se explorarán investigaciones recientes que destacan la importancia de estos espacios para reducir el estrés, mejorar la cohesión social y fomentar una vida más activa. Finalmente, se debatirán propuestas innovadoras para integrar de manera efectiva más áreas verdes en las ciudades contemporáneas.
+![image](https://github.com/user-attachments/assets/f83f09be-4816-4d98-95b6-0ccc2483a18f)
 
-## Objetivo general
-Estudiar la relación entre calidad de vida, hábitos y zonas verdes con el fin de obtener estadísticas y gráficos que muestren la evolución de estas variables según la provincia en España.
 
-## Objetivos específicos
-1. Explorar el impacto de las zonas verdes en la mejora de la calidad de vida, tanto a nivel físico como emocional.
-2. Analizar cómo la presencia de áreas naturales influye en la adopción de hábitos saludables y en la cohesión social.
-3. Proponer estrategias sostenibles para aumentar y mejorar los espacios verdes en entornos urbanos.
-   
-## Metodología y Resultados
+## Descripción del Estudio
 
-#### Objetivo 1
-Análisis de datos con R Studio: Se utilizarán bases de datos abiertas para realizar análisis estadísticos sobre la relación entre zonas verdes y calidad de vida, incluyendo regresiones y modelos predictivos para evaluar el impacto en la salud física y mental.
+El estudio se centra en:
+- **Tendencias en el consumo de alcohol y tabaco**: Analiza el cambio en los patrones de consumo de estas sustancias a lo largo de los años.
+- **Correlación con el estado de salud**: Examina cómo estos hábitos de consumo afectan el bienestar físico de las personas.
+- **Datos de diversas fuentes**: Integra estadísticas de organismos de salud y articulos que relacionan los resultados obtenidos.
 
-#### Objetivo 2
-Visualización interactiva con Shiny: Se desarrollarán aplicaciones interactivas en Shiny para explorar datos sobre hábitos saludables y uso de espacios verdes, permitiendo a los participantes filtrar variables y observar patrones de comportamiento en tiempo real.
+Este archivo HTML contiene visualizaciones y un análisis estadístico de los resultados obtenidos, así como las conclusiones y recomendaciones finales.
 
-#### Objetivo 3
-Propuestas urbanísticas y simulaciones: Con Shiny, se simularán estrategias de expansión de zonas verdes en entornos urbanos. Los participantes podrán diseñar y visualizar propuestas de planificación sostenible, evaluando su viabilidad e impacto mediante modelos interactivos.
+## Estructura del Proyecto
 
-## Conclusiones generales
-Con la información recabada hemos podido comprobar cómo afecta la actividad física y el estilo de vida saludable a la salud de los individuos. 
+- **Introducción**: Un contexto sobre el impacto del alcohol y tabaco en la salud pública.
+- **Metodología**:
+  - **Selección de Datos**: Los datos utilizados provienen de encuestas nacionales y reportes de instituciones de salud, abarcando múltiples años para observar tendencias a largo plazo.
+  - **Análisis Estadístico**: Se emplean correlaciones estadísticas para evaluar la relación entre el consumo de estas sustancias y diversos indicadores de salud, como la mortalidad.
+  - **Visualización de Datos**: Se presentan gráficos que muestran la evolución y correlación entre consumo y salud.
+- **Resultados**:
+  - **Consumo de Alcohol**: Los resultados muestran un aumento/disminución en el consumo de alcohol en ciertos grupos poblacionales.
+  - **Consumo de Tabaco**: Tendencias en el consumo de tabaco con diferencias según edad, género, y región.
+  - **Impacto en la Salud**: Datos sobre enfermedades relacionadas (por ejemplo, enfermedades cardiovasculares, cáncer de pulmón) y su relación con el consumo de estas sustancias.
+- **Conclusiones y Recomendaciones**: Basadas en los hallazgos, se sugieren políticas de reducción de consumo y promoción de la salud.
 
-## Referencias
-Bibtex
+## Autores
+
+- Víctor Brown Sogorb
+- Nicolás García Gómez
+- Sara Meda López
+
+## Resultados Destacados
+
+Los principales hallazgos del estudio incluyen:
+- **Tendencias en Consumo**: Los datos revelan que el consumo de alcohol ha tenido un patrón de aumento/estabilización/disminución en el último período analizado, mientras que el consumo de tabaco muestra una tendencia de bajada.
+- **Correlaciones con la Salud**: Se encontró una relación significativa entre el consumo de tabaco y el aumento en enfermedades respiratorias. El alcohol mostró una correlación con ciertos tipos de cáncer y problemas hepáticos.
+- **Impacto Social y Económico**: Los hallazgos sugieren un alto coste económico y social asociado a estos hábitos, destacando la importancia de campañas de prevención.
+
+## Requisitos
+
+Este archivo HTML está diseñado para ser visualizado en un navegador moderno que soporte HTML5 y JavaScript. Se recomienda una resolución de pantalla de al menos 1280x720 para una mejor visualización de los gráficos.
+
+## Uso
+
+1. **Descarga el archivo `Resultados-y-Conclusiones.html`**.
+2. **Abre el archivo en tu navegador** para visualizar el análisis completo con gráficos y conclusiones.
+
+## Futuras Investigaciones
+
+Este estudio sugiere posibles direcciones para investigaciones adicionales, como:
+- La exploración de factores adicionales que pueden influir en el consumo, como la situación económica y políticas específicas en cada región.
+- Análisis más profundo de los efectos de intervenciones de salud pública en la reducción del consumo de estas sustancias.
+
+---
+
+Este README proporciona una guía completa del proyecto, explicando el objetivo del estudio, sus métodos, resultados y la relevancia de sus conclusiones para la salud pública.
+

@@ -447,7 +447,7 @@ En la categoría de **Bueno** se puede observar como pese a la invariabilidad ap
 
 En caso de las comunidades vuelve a resaltar el caso de Ceuta, que refleja el descenso que ya hemos mencionado en la categoría **Muy bueno** con un incremento en la categoría de **Bueno**, teniendo una progresión de 36%-43%-67% en los 3 años de medida. No se puede decir lo mismo de Asturias que, pese a estar consistentemente por debajo de la media en la categoría anterior, no se ve una gran proporción en la categoría de **Muy bueno** manteniendose en torno al 60% e incluso disminuyendo con los años.
 
-También se puede observar como en el caso de Cantabria los datos en esta categoría son de los perores del país con una evolución de 43%-40%-32%, contrarrestando lo dicho en la categoría de **Muy bueno.**  
+También se puede observar como en el caso de Cantabria los datos en esta categoría son de los perores del país con una evolución de 43%-40%-32%, contrarrestando lo dicho en la categoría de **Muy bueno.**
 
 **Regular:**
 
@@ -493,7 +493,7 @@ Si quisieramos resumir las coclusiones extraidas del análisis evolutivo en func
 
 **Consumo de Alcohol:** tal y como se explica en el [Analisis en función del sexo] del [Dataset: Alcohol], el consumo de Alcohol varía en el país desde 2009 hasta 2020 reflejándose esta variación en el caso de los hombres como un descenso en la tasa del consumo de 2 puntos de media y en el caso de las mujeres como un ascenso en 5 puntos, acabando con una media de 72% y 55 % respectivamente. Si bien los cambios en caso del sexo masculino no son significativos no se puede decir lo mismo de las mujeres, cuyo aumento en la tasa del consumo es suficiente para marcar una tendencia.
 
-Incluso cuando las modificaciones son pequeñas durante los años hay que denotar que la tasa del consumo de alcohol en el país es relativamente alta en comparación con otros paises de la UE (e.j #TODO) y se ha demostrado en infinidad de estudios que esta gran tasa de consumo no beneficia el estado de salud del país.
+Incluso cuando las modificaciones son pequeñas durante los años hay que denotar que la tasa del consumo de alcohol en el país es relativamente alta en comparación con otros paises de la UE (<https://www.sanidad.gob.es/ca/alcoholJovenes/docs/alcoholEuropaEspanol.pdf>) y se ha demostrado en infinidad de estudios que esta gran tasa de consumo no beneficia el estado de salud del país.
 
 **Consumo de tabaco:** como se puede observar en el [Analisis en función del sexo] del [Dataset: Consumo de tabaco], el consumo de tabaco disminuye de manera significativa desde el año 2009 hasta 2020, reduciendose la media del número de fumadores diarios de un 31 % a un 23 % en caso de hombres y de un 21 % a un 16 % en caso de mujeres. Estos decrementos combinados con el aumento de las personas que admiten nunca haber fumado desde un 31% a un 47 % en caso de hombres y de un 61% a un 65% en caso de mujeres.
 
@@ -504,11 +504,10 @@ Los cambios en estos datasets nos indican una tendencia positiva hacia la dismin
 El estado de salud percibido en el país evoluciona positivamente pero este aumento no es demasiado significativo, pese a ello un incremento sigue siendo buenas noticias y se puede relacionar con los determinantes estudiados.
 
 **Conclusiones del análisis:**
->>>>>>> 4b0d87a37f0e068289ebbe26e482deab9a0fc62e
 
-En el caso de los hombres el estado de salud mejora considerablemente a través de los años 2009-2020 como visto en los datos de la categoría de **Muy bueno**, pero también se disminuye el número de personas de la categoría **Malo** y **Muy malo** que "mejoran" a la categoría de **Regular**. Este aumento general de la salud se puede correlacionar con la disminución del consumo de tabaco entre hombres en el mismo periodo de tiempo, como mencionado en el resumen del análisis del consumo de tabaco la cantidad de fumadores diarios hombres se desploma de un 31% a un 23% de media en todo el país y la cantidad de hombres que admiten no haber fumado nunca aumenta de un 31% a un 47%. El razonamiento de esta correlación se basa en los resultados de varios estudios que relacionan estas dos variables como #TODO.
+En el caso de los hombres el estado de salud mejora considerablemente a través de los años 2009-2020 como visto en los datos de la categoría de **Muy bueno**, pero también se disminuye el número de personas de la categoría **Malo** y **Muy malo** que "mejoran" a la categoría de **Regular**. Este aumento general de la salud se puede correlacionar con la disminución del consumo de tabaco entre hombres en el mismo periodo de tiempo, como mencionado en el resumen del análisis del consumo de tabaco la cantidad de fumadores diarios hombres se desploma de un 31% a un 23% de media en todo el país y la cantidad de hombres que admiten no haber fumado nunca aumenta de un 31% a un 47%.
 
-Respecto al consumo de Alcohol también se puede esbozar una correlación con el estado de salud, ya que, aún no siendo tan significativo el descenso en caso de los hombres (de solo un 2%) esto también puede conllevar una mejora en el estado de salud percibido como concluyen varios estudios como #TODO.
+Respecto al consumo de Alcohol también se puede esbozar una correlación con el estado de salud, ya que, aún no siendo tan significativo el descenso en caso de los hombres (de solo un 2%).
 
 En el caso de las mujeres el estado de salud mejora en menor medida en contraposición con los hombres, sin embargo, estos valores que muestran una tendencia positiva también son esperanzadores. Un incremento de 5 puntos de media en la categoría **Muy bueno** y un descenso de 2 puntos en las categorías de **Regular** y **Malo** que se pueden correlacionar con el descenso de la cantidad de fumadores diarios de un 21% a un 16% y el aumento de personas que nunca han fumado de un 61% a un 65%. Por parte del consumo de alcohol nos encontramos con un paradigma distinto ya que, entre mujeres, el consumo de alcohol a aumentado con los años, esto puede haber tenido inplicaciones negativas en el estado de salud. Las correlaciones se siguen haciendo en base a los estudios comentados anteriormente.
 
@@ -557,4 +556,3 @@ Para hacer el análisis en este aspecto se analizarán los datos de todas las co
 **Melilla:** En Melilla las cifras se mantienen constantes durante este periodo de tiempo, con un 19% en la catgoría **Muy bueno,** y un 60%, 16%, 4% en las siguientes respectivamente. Esta invariabilidad se mantiene pese a una reducción del 13 % en el consumo de alcohol y una reducción del 3 % en el consumo de tabaco.
 
 En cuanto al análisis de las comunidades autónomas podemos concluir que existe una correlación entre el estado de salud y el consumo de tabaco y alcohol, sin embargo, el estado de salud es una variable multifactorial que depende de muchas más cosas que estos determinantes estudiados, por lo tanto, dentro del estudio de cada comunidad autónoma se pueden encontrar excepciones o datos que no apoyen completamente este análisis. Pese a todo, el objetivo de este estudio y, en conclusión, de este trabajo no deja de ser el de manejar y tratar distintos datasets por lo que tomese los resultados de este trabajo "con un grano de sal".
->>>>>>> 4b0d87a37f0e068289ebbe26e482deab9a0fc62e

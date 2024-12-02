@@ -54,7 +54,7 @@ Este estudio sugiere posibles direcciones para investigaciones adicionales, como
 - La exploración de factores adicionales que pueden influir en el consumo, como la situación económica y política específicas en cada región.
 - Análisis más profundo de los efectos de intervenciones de salud pública en la reducción del consumo de estas sustancias.
 
-## Referencias:
+## Referencias
 - Rehm J, Rovira P, Llamosas-Falcón L, Shield KD. Dose-Response Relationships between Levels of Alcohol Use and Risks of Mortality or Disease, for All People, by Age, Sex, and Specific Risk Factors. Nutrients. 2021 Jul 30;13(8):2652. doi: 10.3390/nu13082652. PMID: 34444809; PMCID: PMC8401096.
 - Im PK, Wright N, Yang L, Chan KH, Chen Y, Guo Y, Du H, Yang X, Avery D, Wang S, Yu C, Lv J, Clarke R, Chen J, Collins R, Walters RG, Peto R, Li L, Chen Z, Millwood IY; China Kadoorie Biobank Collaborative Group. Alcohol consumption and risks of more than 200 diseases in Chinese men. Nat Med. 2023 Jun;29(6):1476-1486. doi: 10.1038/s41591-023-02383-8. Epub 2023 Jun 8. PMID: 37291211; PMCID: PMC10287564.
 - Sha M, Sun JQ, Xia Q. The alcohol flushing syndrome: A risk factor for cancer. Ann Acad Med Singap. 2024 Jul 30;53(7):405-406. doi: 10.47102/annals-acadmedsg.2024191. PMID: 39132956.

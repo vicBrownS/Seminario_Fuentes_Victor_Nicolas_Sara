@@ -31,7 +31,10 @@ Este archivo HTML contiene visualizaciones y un análisis estadístico de los re
 
 ## Resultados Destacados
 
-Los principales hallazgos del estudio incluyen: - **Tendencias en Consumo**: Los datos revelan que el consumo de alcohol ha tenido un patrón de aumento o disminución variable en función del territorio, sin embargo, desde un punto de vista nacional ha tendido a aumentar ligeramente en el último período analizado, mientras que el consumo de tabaco muestra una tendencia de bajada. - **Correlaciones con la Salud**: Se encontró una relación significativa entre el consumo de tabaco y el aumento en enfermedades respiratorias. El alcohol mostró una correlación con ciertos tipos de cáncer y problemas hepáticos. - **Impacto Social y Económico**: Los hallazgos sugieren un alto coste económico y social asociado a estos hábitos, destacando la importancia de campañas de prevención.
+Los principales hallazgos del estudio incluyen:
+- **Tendencias en Consumo**: Los datos revelan que el consumo de alcohol ha tenido un patrón de aumento o disminución variable en función del territorio, sin embargo, desde un punto de vista nacional ha tendido a aumentar ligeramente en el último período analizado, mientras que el consumo de tabaco muestra una tendencia de bajada.
+- **Correlaciones con la Salud**: Se encontró una relación significativa entre el consumo de tabaco y el aumento en enfermedades respiratorias. El alcohol mostró una correlación con ciertos tipos de cáncer y problemas hepáticos.
+- **Impacto Social y Económico**: Los hallazgos sugieren un alto coste económico y social asociado a estos hábitos, destacando la importancia de campañas de prevención.
 
 ## Requisitos
 

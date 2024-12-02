@@ -1,6 +1,6 @@
 # Análisis Evolutivo y Correlativo del Consumo de Alcohol, Tabaco y Estado de Salud
 
-A continuación se presenta un análisis detallado sobre las tendencias de consumo de alcohol y tabaco, y su correlación con indicadores de salud pública en diversas poblaciones. Este estudio, llevado a cabo por Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López, tiene como objetivo identificar patrones y proporcionar una base científica para recomendaciones en políticas de salud pública.
+A continuación se presenta un análisis detallado sobre las tendencias de consumo de alcohol y tabaco, y su correlación con indicadores de salud pública en diversas poblaciones. El estudio, llevado a cabo por Víctor Brown Sogorb, Nicolás García Gómez y Sara Meda López, tiene como objetivo identificar patrones y proporcionar una base científica para recomendaciones en políticas de salud pública.
 
 ![image](https://github.com/user-attachments/assets/f83f09be-4816-4d98-95b6-0ccc2483a18f)
 

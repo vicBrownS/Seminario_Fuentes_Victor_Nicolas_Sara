@@ -11,7 +11,7 @@ El estudio se centra en:
 - **Correlación con el estado de salud**: Examina cómo estos hábitos de consumo afectan el bienestar físico de las personas.
 - **Datos de diversas fuentes**: Integra estadísticas de organismos de salud y articulos que relacionan los resultados obtenidos.
 
-Este archivo HTML contiene visualizaciones y un análisis estadístico de los resultados obtenidos, así como las conclusiones y recomendaciones finales.
+El archivo HTML contiene visualizaciones y un análisis estadístico de los resultados obtenidos, así como las conclusiones y recomendaciones finales.
 
 ## Estructura del Proyecto
 

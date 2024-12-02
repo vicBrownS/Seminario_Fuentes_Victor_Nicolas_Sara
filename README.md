@@ -6,7 +6,10 @@ A continuación se presenta un análisis detallado sobre las tendencias de consu
 
 ## Descripción del Estudio
 
-El estudio se centra en: - **Tendencias en el consumo de alcohol y tabaco**: Analiza el cambio en los patrones de consumo de estas sustancias a lo largo de los años. - **Correlación con el estado de salud**: Examina cómo estos hábitos de consumo afectan el bienestar físico de las personas. - **Datos de diversas fuentes**: Integra estadísticas de organismos de salud y articulos que relacionan los resultados obtenidos.
+El estudio se centra en:
+- **Tendencias en el consumo de alcohol y tabaco**: Analiza el cambio en los patrones de consumo de estas sustancias a lo largo de los años.
+- **Correlación con el estado de salud**: Examina cómo estos hábitos de consumo afectan el bienestar físico de las personas.
+- **Datos de diversas fuentes**: Integra estadísticas de organismos de salud y articulos que relacionan los resultados obtenidos.
 
 Este archivo HTML contiene visualizaciones y un análisis estadístico de los resultados obtenidos, así como las conclusiones y recomendaciones finales.
 

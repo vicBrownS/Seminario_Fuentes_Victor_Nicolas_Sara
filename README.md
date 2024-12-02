@@ -50,7 +50,9 @@ Este archivo HTML está diseñado para ser visualizado en un navegador moderno q
 
 ## Futuras Investigaciones
 
-Este estudio sugiere posibles direcciones para investigaciones adicionales, como: - La exploración de factores adicionales que pueden influir en el consumo, como la situación económica y políticas específicas en cada región. - Análisis más profundo de los efectos de intervenciones de salud pública en la reducción del consumo de estas sustancias.
+Este estudio sugiere posibles direcciones para investigaciones adicionales, como:
+-La exploración de factores adicionales que pueden influir en el consumo, como la situación económica y políticas específicas en cada región.
+Análisis más profundo de los efectos de intervenciones de salud pública en la reducción del consumo de estas sustancias.
 
 ------------------------------------------------------------------------
 

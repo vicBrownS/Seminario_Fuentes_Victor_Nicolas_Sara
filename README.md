@@ -57,7 +57,8 @@ Este estudio sugiere posibles direcciones para investigaciones adicionales, como
 ## Referencias
 - Rehm J, Rovira P, Llamosas-Falcón L, Shield KD. Dose-Response Relationships between Levels of Alcohol Use and Risks of Mortality or Disease, for All People, by Age, Sex, and Specific Risk Factors. Nutrients. 2021 Jul 30;13(8):2652. doi: 10.3390/nu13082652. PMID: 34444809; PMCID: PMC8401096. (https://pubmed.ncbi.nlm.nih.gov/34444809/)
 - Im PK, Wright N, Yang L, Chan KH, Chen Y, Guo Y, Du H, Yang X, Avery D, Wang S, Yu C, Lv J, Clarke R, Chen J, Collins R, Walters RG, Peto R, Li L, Chen Z, Millwood IY; China Kadoorie Biobank Collaborative Group. Alcohol consumption and risks of more than 200 diseases in Chinese men. Nat Med. 2023 Jun;29(6):1476-1486. doi: 10.1038/s41591-023-02383-8. Epub 2023 Jun 8. PMID: 37291211; PMCID: PMC10287564. (https://www.nature.com/articles/s41591-023-02383-8)
-- Sha M, Sun JQ, Xia Q. The alcohol flushing syndrome: A risk factor for cancer. Ann Acad Med Singap. 2024 Jul 30;53(7):405-406. doi: 10.47102/annals-acadmedsg.2024191. PMID: 39132956. (https://annals.edu.sg/the-alcohol-flushing-syndrome-a-risk-factor-for-cancer/)
+- Sha M, Sun JQ, Xia Q. The alcohol flushing syndrome: A risk factor for cancer. Ann Acad Med Singap. 2024 Jul 30;53(7):405-406. doi: 10.47102/annals-acadmedsg.2024191. PMID: 39132956.   
+(https://annals.edu.sg/the-alcohol-flushing-syndrome-a-risk-factor-for-cancer/)
 - Thibaut F. Alert out on tobacco and alcohol consumption in young European women. Eur Arch Psychiatry Clin Neurosci. 2018 Jun;268(4):317-319. doi: 10.1007/s00406-018-0901-7. PMID: 29737407. (https://link.springer.com/article/10.1007/s00406-018-0901-7)
 
 ------------------------------------------------------------------------
